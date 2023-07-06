@@ -97,15 +97,28 @@ Pembagian numerikal fitur yaitu *nunique >= 15*
 
 Data ini memiliki outliers seperti yang ditunjukan pada box plot di Gambar 1, tetapi outliers tidak akan dihilangkan karena akan membuat beberapa fitur kehilangan value yang mengakibatkan beberapa fitur menjadi tidak berguna yang akan mempengaruhi tingkat akurasi model.
 
+Pada diagram violin plot bagian fitur ANNUAL_MILEAGE dan CREDIT_SCORE ada sedikit korelasi terhadap OUTCOME, terlihat dari perbedaan posisi cembungan. 
+
 Gambar 1. Violin Plot & Box Plot
 
-Gambar 2. Correlation Matrix
+Gambar 2. Correlation Matrix setelah preprocessing data
+
+Terlihat diagram kategorikal di Gambar 3 pada fitur AGE umur 16-25, DRIVING_EXPERIENCE 0-9 tahun pengalaman dan INCOME kategori poverty berpeluang tinggi untuk dapat mengeklaim asuransi.
+
+Gambar 3. Diagram Categorical Features
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+Teknik-teknik yang dilakukan untuk Data Preparation untuk model yang optimal.
+
+- Pada dataset ini terdapat nilai-nilai yang kosong sebanyak 1851 baris. Untuk mengatasi ini kita lakukan cara termudah yaitu dengan menghapus baris-baris yang memiliki nilai kosong.
+- LabelEncoding
+- OneHotEncoding
+- TrainTestSplit
+- Oversampling
+- StandardScaler
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan proses data preparation yang dilakukan
@@ -114,6 +127,71 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
 ## Modeling
 Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
 
+Tabel 2. Hasil akurasi base model
+|Model|Train Accuracy|Test Accuracy|
+|-----|--------------|-------------|
+|Logistic Regression|0.894933|0.848671|
+|Random Forest Classifier|0.979552|0.833538|
+|XGBoost|0.972351|0.832311|
+|Support Vector Classifier|0.91088|0.847444|
+
+Pada Tabel 2 menunjukan algoritma Logistic Regression dan SVC menghasilkan tingkat accuracy 84%. Algoritma SVC menghasilkan accuracy yang lebih tinggi karena outliers berpengaruh sedikit pada model ini.
+
+Gambar 4. Perbandingan hasil accuracy setiap model
+
+Model yang digunakan
+
+Parameters
+- n_estimators: 
+- max_depth: 
+- random_state: 
+- n_jobs: 
+- gamma: 
+- criterion: 
+- learning_rate: 
+- C: 
+- kernel: 
+- max_iter: 
+
+Models
+- Logistic Regression
+  - Kelebihan
+    - Simple untuk diimplementasikan.
+    - Terbukti sangat efisien ketika dataset memiliki fitur yang dapat dipisahkan secara linear.
+    - Memungkinkan model diperbarui dengan mudah untuk merefleksikan data baru.
+  - Kekurangan
+    - Performa kurang baik untuk non-linear data.
+    - Performa buruk untuk fitur yang tidak relevan dan berkorelasi tinggi.
+    - Ketergantungan tinggi pada penyajian data yang tepat.
+- Random Forest Classifier
+  - Kelebihan
+    - Fleksibel untuk masalah klasifikasi dan regresi.
+    - Mengurangi overfitting di pohon keputusan dan membantu meningkatkan akurasi.
+    - bekerja dengan baik dengan nilai kategoris dan berkelanjutan
+  - Kekurangan
+    - Membutuhkan banyak daya komputasi serta sumber daya karena membangun banyak pohon untuk menggabungkan keluarannya.
+    - Membutuhkan banyak waktu untuk pelatihan karena menggabungkan banyak pohon keputusan untuk menentukan kelas.
+    - Interpretasi yang sulit dan membutuhkan mode penyetelan yang tepat untuk data.
+- XGBoost
+  - Kelebihan
+    - Dirancang untuk pelatihan model yang efisien dan dapat *scalable*, sehingga cocok untuk kumpulan data besar.
+    - Memiliki berbagai hyperparameter yang dapat disesuaikan untuk mengoptimalkan kinerja, membuatnya sangat mudah disesuaikan.
+    - Memiliki dukungan bawaan untuk menangani nilai yang hilang, membuatnya mudah untuk bekerja dengan data dunia nyata yang sering kali memiliki nilai yang hilang.
+  - Kekurangan
+    - XGBoost bisa intensif secara komputasi, terutama saat melatih model besar, membuatnya kurang cocok untuk sistem dengan sumber daya terbatas.
+    - Dapat rentan terhadap overfitting, terutama saat dilatih pada kumpulan data kecil atau saat terlalu banyak pohon yang digunakan dalam model.
+    - Memiliki banyak hyperparameter yang dapat disesuaikan, sehingga penting untuk menyetel parameter dengan benar guna mengoptimalkan kinerja.
+    - Dapat memakan banyak memori, terutama saat bekerja dengan kumpulan data besar, membuatnya kurang cocok untuk sistem dengan sumber daya memori terbatas.
+- Support Vector Classifier (SVC)
+  - Kelebihan
+    - Bekerja relatif baik ketika ada batas pemisahan yang jelas antara kelas.
+    - Lebih efektif dalam ruang dimensi tinggi dan relatif hemat memori.
+    - Efektif dalam kasus di mana dimensi lebih besar dari jumlah sampel.
+  - Kekurangan
+    - Tidak cocok untuk dataset besar.
+    - Tidak bekerja dengan baik ketika kumpulan data memiliki lebih banyak noise.
+    - Ketika kelas dalam data adalah titik yang tidak dipisahkan dengan baik, yang berarti ada kelas yang tumpang tindih, SVM tidak bekerja dengan baik.
+
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
 - Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
@@ -121,6 +199,74 @@ Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyel
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+
+- Accuracy
+- Precission
+- Recall
+- ROC AUC
+- Confussion Matrix
+- F1 Score
+
+### Accuracy
+
+### Precission
+
+### Recall
+
+### ROC AUC
+
+### Confussion Matrix
+
+### F1 Score
+
+Tabel 3. Classification report untuk model Logistic Regression
+
+| |Precission|Recall|F1 Score|Support|
+|-|----------|------|--------|-------|
+|0.0|0.89|0.89|0.89|1725|
+|1.0|0.74|0.74|0.74|720|
+|Accuracy|||0.85|2445|
+|Marcro Avg|0.82|0.82|0.82|2445|
+|Weighted Avg|0.85|0.85|0.85|2445|
+
+Tabel 4. Classification report untuk model Random Forest Classifier
+
+| |Precission|Recall|F1 Score|Support|
+|-|----------|------|--------|-------|
+|0.0|0.90|0.87|0.89|1725|
+|1.0|0.74|0.77|0.74|720|
+|Accuracy|||0.84|2445|
+|Marcro Avg|0.81|0.82|0.81|2445|
+|Weighted Avg|0.85|0.84|0.84|2445|
+
+Tabel 5. Classification report untuk model XGBoost
+
+| |Precission|Recall|F1 Score|Support|
+|-|----------|------|--------|-------|
+|0.0|0.90|0.88|0.89|1725|
+|1.0|0.72|0.76|0.74|720|
+|Accuracy|||0.84|2445|
+|Marcro Avg|0.81|0.82|0.82|2445|
+|Weighted Avg|0.85|0.84|0.85|2445|
+
+Tabel 6. Classification report untuk model Support Vector Classifier
+
+| |Precission|Recall|F1 Score|Support|
+|-|----------|------|--------|-------|
+|0.0|0.89|0.89|0.89|1725|
+|1.0|0.74|0.74|0.74|720|
+|Accuracy|||0.85|2445|
+|Marcro Avg|0.82|0.82|0.82|2445|
+|Weighted Avg|0.85|0.85|0.85|2445|
+
+Tabel 7. Hasil akhir model setelah hyperparameter tuning
+
+|Model|Accuracy|ROC AUC|
+|-----|--------|-------|
+|Logistic Regression|84.826176|0.918|
+|Random Forest Classifier|84.130879|0.908|
+|XGBoost|84.417178|0.915|
+|Support Vector Classifier|84.826176|0.916|
 
 Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
 - Penjelasan mengenai metrik yang digunakan
