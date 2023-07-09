@@ -2,6 +2,14 @@
 
 ## Domain Proyek
 
+Asuransi atau yang lebih dikenal dengan pertanggungan adalah sesuatu yang tidak asing lagi bagi masyarakat, sebagian besar masyarakat telah membuat perjanjian atau polis asuransi dengan perusahaan asuransi, baik milik Negara ataupun milik swasta. Namun masih banyak kesadaran untuk bebarapa masyarakat tentang asuransi terbilang masih rendah, karena kurang pahamnya masyarakat berkaitan dengan asuransi yang dianggap hanya membuang - buang uang dan tidak ada fungsinya.
+
+Jika dilihat untuk masa depan peran asuransi sangatlah penting bagi masyarakat diantaranya seperti antisipasi untuk kejadian yang tidak terduga, untuk menyusun rencana masa depan, keamanan finansial dan melindungi keluarga serta orang tercinta. Dengan semua manfaat yang diberikan asuransi masyarakat akan merasa tenang pada masa depan keluarganya. [1]
+
+Tidak selamanya praktek asuransi berjalan dengan baik. Dalam praktek ditemukan ditolaknya klaim asuransi tertanggung oleh penanggung setelah risiko, kerugian atau peristiwa yang tidak diinginkan terjadi. Tulisan ini bertujuan untuk mengetahui perlindungan hukum bagi tertanggung yang menghadapi penolakan klaim asuransidan mengetahui akibat hukum apabila pihak penanggung menolak klaim dari pihak tertanggung. [2]
+
+Oleh sebab itu diperlukan sebuah solusi untuk bisa memprediksi permohonan asuransi agar sebagai tolak ukur awal untuk menentukan apakah pelanggan layak mendapatkan asuransi.
+
 Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
@@ -19,16 +27,56 @@ Bagian laporan ini mencakup:
 ### Problem Statements
 
 Menjelaskan pernyataan masalah latar belakang:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- Bagaimana cara memahami data ? 
+- Bagaimana cara mengolah data asuransi agar bisa menghasilkan model yang baik ?
+- Bagaimana membuat atau menentukan model yang terbaik untuk bisa memprediksi dengan akurasi tertinggi ?
+- Bagaimana cara meningkatkan akurasi model ?
 
 ### Goals
 
 Menjelaskan tujuan dari pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+- Untuk memahami data dengan cara melakukan *Exploratory Data Analisys*:
+  - Memahami data setiap fitur, tipe data serta mengkategorikan apakah numerikal atau kategorikal.
+  - Melakukan visualisasi data agar lebih mudah dipahami. Kali ini kita akan menggunakan beberapa visualisasi data yaitu *pie chart*, *bar chart*, *violin plot* dan *box plot*.
+  - Melakukan analisis hubungan antara dua atau lebih fitur dalam dataset. Bisa dilakukan dengan *pair plot*, *correlation matrix*, dll.
+- Untuk mengolah data atau preprocessing dengan cara melakukan:
+  - Melakukan *handling null value*, dapat dilakukan dengan cara mengisi dengan nilai *mean*, *median* dll atau menghapusnya. Pada kali ini kita lakukan cara termudah dengan menghapus data yang null.
+  - Melakukan *encoding* terhadap fitur kategorikal, bisa menggunakan *One Hot Encoder* atau *Label Encoder*. Pada kali ini kita menggunakan keduanya.
+  - Mengatasi data tidak seimbang (*imbalance data*). Pada kali ini kita melakukan teknik *oversampling* dengan metode SMOTE (*Synthetic Minority Oversampling Technique*).
+  - Melakukan pembagian dataset untuk *train* dan *test* dengan rasio 7:3.
+  - Malakukan *encoding* agar semua data dalam skala yang sama dengan menggunakan *Standard Scaler*.
+- Untuk menentukan model kita akan membandingkan menggukanan 4 algoritma klaasifikasi:
+  - Melakukan prediksi dengan *base model* menggunakan 4 algoritmat yaitu *Logistic Regression*, *Random Forest Classifier*, *XGBoost* dan *Support Vector Classifier*.
+  - Menggunakan beberapa metrik untuk tolak ukur model yaitu *accuracy*, *precission*, *recall*, *confusion matrix*, *F1 Score* dan *ROC AUC*.
+  - Formula untuk *accuracy*
+    ```math
+    \begin{array}{rcl}
+    accuracy & = & \dfrac{TP + TN}{TP + FP + TN + FN}
+    \end{array}
+    ```
+  - Formula untuk *precission*
+    ```math
+    \begin{array}{rcl}
+    precission & = & \dfrac{TP}{TP + FP}
+    \end{array}
+    ```
+  - Formula untuk *recall*
+    ```math
+    \begin{array}{rcl}
+    recall & = & \dfrac{TP}{TP + FN}
+    \end{array}
+    ```
+  - Formula untuk *F1 score*
+    ```math
+    \begin{array}{rcl}
+    F1 & = & \dfrac{2 * precission * recall}{precission + recall}
+    \end{array}
+    ```
+- Untuk metode peningkatam model, kita akan melakukan:
+  - *Hyperparameter tuning* untuk model, teknik yang dipakai menggunakan *GridSearchSV*.
+  - Menganalisis fitur-fitur yang paling berdampak pada model, teknik yang dipakai menggunakan *RFECV* (*Recursive Feature Elimination with Cross Validation*).
+ 
+Setalah model yang dibuat sudah cukup optimal, kita sudah bisa melanjutkannya ke tahap implementasi. Perusahaan asuransi yang ingin menerapkan model prediksi ini untuk tahap awal atau tolak ukur awal ketika pelanggan melakukan pengajuan asuransi dan dapat melihat hasilnya. Tetapi model ini tidak harus dipakai untuk *tools* dalam *decision maker* di tahap akhir, melainkan digunakan untuk tahap awal sebagai *insight*. Beberapa perusahaan mungkin memiliki ketentuan-ketentuan tambahan dalam tahap persetujuan pengajuan asuransi.
 
 Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
 
