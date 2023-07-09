@@ -6,23 +6,11 @@ Asuransi atau yang lebih dikenal dengan pertanggungan adalah sesuatu yang tidak 
 
 Jika dilihat untuk masa depan peran asuransi sangatlah penting bagi masyarakat diantaranya seperti antisipasi untuk kejadian yang tidak terduga, untuk menyusun rencana masa depan, keamanan finansial dan melindungi keluarga serta orang tercinta. Dengan semua manfaat yang diberikan asuransi masyarakat akan merasa tenang pada masa depan keluarganya. [1]
 
-Tidak selamanya praktek asuransi berjalan dengan baik. Dalam praktek ditemukan ditolaknya klaim asuransi tertanggung oleh penanggung setelah risiko, kerugian atau peristiwa yang tidak diinginkan terjadi. Tulisan ini bertujuan untuk mengetahui perlindungan hukum bagi tertanggung yang menghadapi penolakan klaim asuransidan mengetahui akibat hukum apabila pihak penanggung menolak klaim dari pihak tertanggung. [2]
+Perusahaan asuransi pada tingkat yang berbeda mengadopsi pemodelan prediktif ke dalam praktik standar mereka, menjadikannya saat yang tepat untuk menyatukan pengalaman beberapa orang. Penting juga untuk memberikan pelajaran yang dipetik di industri dan aplikasi lain dan untuk mengidentifikasi area di mana para aktuaris dapat meningkatkan metode mereka. Karena ilmu data dan analitik prediktif berkembang pesat, tidak diragukan lagi akan ada peluang berkelanjutan untuk meningkatkan metodologi terkemuka saat ini, jadi kami menyertakan diskusi untuk mengatasi masalah agar tetap tidak tertinggal. [2]
 
-Oleh sebab itu diperlukan sebuah solusi untuk bisa memprediksi permohonan asuransi agar sebagai tolak ukur awal untuk menentukan apakah pelanggan layak mendapatkan asuransi.
-
-Pada bagian ini, kamu perlu menuliskan latar belakang yang relevan dengan proyek yang diangkat.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-  
-  Format Referensi: [Judul Referensi](https://scholar.google.com/) 
+Oleh sebab itu diperlukan sebuah solusi untuk bisa memprediksi permohonan asuransi agar sebagai tolak ukur awal untuk menentukan apakah pelanggan layak mendapatkan asuransi. Untuk mencapai tingkat keberhasilan yang tinggi diperlukan data yang lengkap dan model yang optimal. Tentu saja penentuan persetujuan permohonan asuransi merupakan hal yang krusial bagi perusahaan. Model ini tidak sepenuhnya ditunjukan untuk _decision maker_ pada tahap akhir, tetapi bisa juga berguna sebagai _tools_ untuk *insight* awal yang memberikan hasil yang cepat.
 
 ## Business Understanding
-
-Pada bagian ini, kamu perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
 
 ### Problem Statements
 
@@ -78,15 +66,6 @@ Menjelaskan tujuan dari pernyataan masalah:
  
 Setalah model yang dibuat sudah cukup optimal, kita sudah bisa melanjutkannya ke tahap implementasi. Perusahaan asuransi yang ingin menerapkan model prediksi ini untuk tahap awal atau tolak ukur awal ketika pelanggan melakukan pengajuan asuransi dan dapat melihat hasilnya. Tetapi model ini tidak harus dipakai untuk *tools* dalam *decision maker* di tahap akhir, melainkan digunakan untuk tahap awal sebagai *insight*. Beberapa perusahaan mungkin memiliki ketentuan-ketentuan tambahan dalam tahap persetujuan pengajuan asuransi.
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Statement” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution statement. Misalnya, menggunakan dua atau lebih algoritma untuk mencapai solusi yang diinginkan atau melakukan improvement pada baseline model dengan hyperparameter tuning.
-    - Solusi yang diberikan harus dapat terukur dengan metrik evaluasi.
-
 ## Data Understanding
 Data asuransi mobil yang digunakan berasal dari Kaggle, data ini merupakan riwayat pengajuan asuransi ke sebuah perusahaan di suatu daerah, data ini berisi 18 fitur tentang informasi *client* asuransi dari perusahaan tersebut. Link Dataset: [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
 
@@ -117,7 +96,7 @@ Setalah mengatasi *missing value* data target cukup tidak seimbang (*imbalance*)
 - Asuransi yang tidak disetujui sebesar 31.1%
 
 Sebagian besar fitur merupakan data kategorikal setelah diketahui jumlah *unique value* pada setiap fitur.
-Tabel 1. Unique Value setiap fitur
+Tabel 1. _Unique Value_ setiap fitur
 |Feature|Unique Value|
 |-------|------------|
 |AGE|4|
@@ -143,37 +122,30 @@ Pembagian numerikal fitur yaitu *nunique >= 15*
 - Numerical: 'SPEEDING_VIOLATIONS', 'ANNUAL_MILEAGE', 'PAST_ACCIDENTS', 'CREDIT_SCORE'
 - Categorical: 'AGE', 'GENDER', 'DRIVING_EXPERIENCE', 'EDUCATION', 'INCOME', 'VEHICLE_OWNERSHIP', 'VEHICLE_YEAR', 'MARRIED', 'CHILDREN', 'POSTAL_CODE', 'VEHICLE_TYPE', 'DUIS', 'RACE'
 
-Data ini memiliki outliers seperti yang ditunjukan pada box plot di Gambar 1, tetapi outliers tidak akan dihilangkan karena akan membuat beberapa fitur kehilangan value yang mengakibatkan beberapa fitur menjadi tidak berguna yang akan mempengaruhi tingkat akurasi model.
+Data ini memiliki outliers seperti yang ditunjukan pada _box plot_ di Gambar 1, tetapi _outliers_ tidak akan dihilangkan karena akan membuat beberapa fitur kehilangan value yang mengakibatkan beberapa fitur menjadi tidak berguna yang akan mempengaruhi tingkat akurasi model.
 
-Pada diagram violin plot bagian fitur ANNUAL_MILEAGE dan CREDIT_SCORE ada sedikit korelasi terhadap OUTCOME, terlihat dari perbedaan posisi cembungan. 
+Pada diagram _violin plot_ bagian fitur ANNUAL_MILEAGE dan CREDIT_SCORE ada sedikit korelasi terhadap OUTCOME, terlihat dari perbedaan posisi cembungan. 
 
 Gambar 1. Violin Plot & Box Plot
 
 Gambar 2. Correlation Matrix setelah preprocessing data
 
-Terlihat diagram kategorikal di Gambar 3 pada fitur AGE umur 16-25, DRIVING_EXPERIENCE 0-9 tahun pengalaman dan INCOME kategori poverty berpeluang tinggi untuk dapat mengeklaim asuransi.
+Terlihat diagram kategorikal di Gambar 3 pada fitur AGE umur 16-25, DRIVING_EXPERIENCE 0-9 tahun pengalaman dan INCOME kategori _poverty_ berpeluang tinggi untuk dapat mengeklaim asuransi.
 
 Gambar 3. Diagram Categorical Features
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data atau exploratory data analysis.
 
 ## Data Preparation
 Teknik-teknik yang dilakukan untuk Data Preparation untuk model yang optimal.
 
 - Pada dataset ini terdapat nilai-nilai yang kosong sebanyak 1851 baris. Untuk mengatasi ini kita lakukan cara termudah yaitu dengan menghapus baris-baris yang memiliki nilai kosong.
-- LabelEncoding
-- OneHotEncoding
-- TrainTestSplit
-- Oversampling
-- StandardScaler
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+- _LabelEncoding_
+- _OneHotEncoding_
+- _TrainTestSplit_
+- _Oversampling_
+- _StandardScaler_
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Tahapan ini membahas mengenai model _machine learning_ yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
 
 Tabel 2. Hasil akurasi base model
 |Model|Train Accuracy|Test Accuracy|
@@ -183,54 +155,56 @@ Tabel 2. Hasil akurasi base model
 |XGBoost|0.972351|0.832311|
 |Support Vector Classifier|0.91088|0.847444|
 
-Pada Tabel 2 menunjukan algoritma Logistic Regression dan SVC menghasilkan tingkat accuracy 84%. Algoritma SVC menghasilkan accuracy yang lebih tinggi karena outliers berpengaruh sedikit pada model ini.
+Pada Tabel 2 menunjukan algoritma _Logistic Regression_ dan _SVC_ menghasilkan tingkat accuracy 84%. Algoritma _SVC_ menghasilkan accuracy yang lebih tinggi karena outliers berpengaruh sedikit pada model ini.
 
 Gambar 4. Perbandingan hasil accuracy setiap model
 
-Model yang digunakan
+_Model_ yang digunakan
 
-Parameters
-- n_estimators: 
-- max_depth: 
-- random_state: 
-- n_jobs: 
-- gamma: 
-- criterion: 
-- learning_rate: 
-- C: 
-- kernel: 
-- max_iter: 
+_Models_
+- _Logistic Regression_
+  adalah teknik analisis data yang menggunakan matematika untuk menemukan hubungan antara dua faktor data. Kemudian menggunakan hubungan ini untuk memprediksi nilai salah satu faktor berdasarkan yang lain. Prediksi biasanya memiliki jumlah hasil yang terbatas, seperti ya atau tidak.
 
-Models
-- Logistic Regression
+  _Logistic regression_ adalah model statistik yang menggunakan fungsi logistik, atau fungsi logit, dalam matematika sebagai persamaan antara x dan y. Fungsi logit memetakan y sebagai fungsi sigmoid dari x. $f(x)$ = $1 \over 1 + e^{-x}$ []
   - Kelebihan
     - Simple untuk diimplementasikan.
     - Terbukti sangat efisien ketika dataset memiliki fitur yang dapat dipisahkan secara linear.
     - Memungkinkan model diperbarui dengan mudah untuk merefleksikan data baru.
   - Kekurangan
-    - Performa kurang baik untuk non-linear data.
+    - Performa kurang baik untuk _non-linear_ data.
     - Performa buruk untuk fitur yang tidak relevan dan berkorelasi tinggi.
     - Ketergantungan tinggi pada penyajian data yang tepat.
-- Random Forest Classifier
+  - Parameter
+    - _random_state_: 200
+- _Random Forest Classifier_
+  adalah algoritma _machine learning_ yang fleksibel dan mudah digunakan yang menghasilkan, bahkan tanpa penyetelan _hyperparameter_, hasil yang bagus di sebagian besar waktu. Ini juga merupakan salah satu algoritma yang paling banyak digunakan, karena kesederhanaan dan keragamannya (dapat digunakan untuk tugas klasifikasi dan regresi). _Random Forest_ merupakan algoritma _supervised learning_. "Hutan/_Forest_" yang dibangun adalah _ensemble_/rombongan dari _decision tree_, biasanya dilatih dengan metode _bagging_. Gagasan utama metode _bagging_ adalah bahwa kombinasi model pembelajaran meningkatkan hasil keseluruhan. []
   - Kelebihan
     - Fleksibel untuk masalah klasifikasi dan regresi.
-    - Mengurangi overfitting di pohon keputusan dan membantu meningkatkan akurasi.
-    - bekerja dengan baik dengan nilai kategoris dan berkelanjutan
+    - Mengurangi _overfitting_ di pohon keputusan dan membantu meningkatkan akurasi.
+    - Bekerja dengan baik dengan nilai kategoris dan berkelanjutan
   - Kekurangan
     - Membutuhkan banyak daya komputasi serta sumber daya karena membangun banyak pohon untuk menggabungkan keluarannya.
     - Membutuhkan banyak waktu untuk pelatihan karena menggabungkan banyak pohon keputusan untuk menentukan kelas.
     - Interpretasi yang sulit dan membutuhkan mode penyetelan yang tepat untuk data.
-- XGBoost
+  - Parameter
+    - _n_estimators_: 50
+    - _max_depth_: 15
+    - _random_state_: 123
+    - _n_jobs_: -1
+- _XGBoost_
+  (_Extreme Gradient Boosting_) adalah implementasi dari algoritma _gradient boosted trees_ yang _open-source_ yang populer dan efisien. _Gradient boosting_ adalah algoritma _supervised learning_, yang mencoba untuk memprediksi variabel target secara akurat dengan menggabungkan estimasi dari sekumpulan model yang lebih sederhana dan lebih lemah.
   - Kelebihan
     - Dirancang untuk pelatihan model yang efisien dan dapat *scalable*, sehingga cocok untuk kumpulan data besar.
-    - Memiliki berbagai hyperparameter yang dapat disesuaikan untuk mengoptimalkan kinerja, membuatnya sangat mudah disesuaikan.
+    - Memiliki berbagai _hyperparameter_ yang dapat disesuaikan untuk mengoptimalkan kinerja, membuatnya sangat mudah disesuaikan.
     - Memiliki dukungan bawaan untuk menangani nilai yang hilang, membuatnya mudah untuk bekerja dengan data dunia nyata yang sering kali memiliki nilai yang hilang.
   - Kekurangan
-    - XGBoost bisa intensif secara komputasi, terutama saat melatih model besar, membuatnya kurang cocok untuk sistem dengan sumber daya terbatas.
-    - Dapat rentan terhadap overfitting, terutama saat dilatih pada kumpulan data kecil atau saat terlalu banyak pohon yang digunakan dalam model.
+    - _XGBoost_ bisa intensif secara komputasi, terutama saat melatih model besar, membuatnya kurang cocok untuk sistem dengan sumber daya terbatas.
+    - Dapat rentan terhadap _overfitting_, terutama saat dilatih pada kumpulan data kecil atau saat terlalu banyak pohon yang digunakan dalam model.
     - Memiliki banyak hyperparameter yang dapat disesuaikan, sehingga penting untuk menyetel parameter dengan benar guna mengoptimalkan kinerja.
     - Dapat memakan banyak memori, terutama saat bekerja dengan kumpulan data besar, membuatnya kurang cocok untuk sistem dengan sumber daya memori terbatas.
-- Support Vector Classifier (SVC)
+- _Support Vector Classifier (SVC/SVM)_ adalah algoritmat _supervised learning_ yang bisa digunakan untuk regresi dan klasifikasi. Karena ketangguhannya, umumnya diterapkan untuk menyelesaikan tugas klasifikasi. Dalam algoritma ini, titik data pertama kali direpresentasikan dalam ruang n-dimensi. Algoritma kemudian menggunakan pendekatan statistik untuk menemukan garis terbaik yang memisahkan berbagai kelas yang ada dalam data.
+
+    Jika titik data diplot dalam grafik 2 dimensi, maka batas keputusan disebut sebagai garis lurus. Namun, jika ada lebih dari dua dimensi, ini disebut sebagai _hyperplanes_. Meskipun mungkin ada beberapa _hyperplane_ yang memisahkan kelas, SVM memilih satu dengan jarak maksimum antar kelas. Scikit-Learn menyediakan dua pengklasifikasi lainnya — SVC() dan NuSVC() yang digunakan untuk tujuan klasifikasi.
   - Kelebihan
     - Bekerja relatif baik ketika ada batas pemisahan yang jelas antara kelas.
     - Lebih efektif dalam ruang dimensi tinggi dan relatif hemat memori.
@@ -238,7 +212,23 @@ Models
   - Kekurangan
     - Tidak cocok untuk dataset besar.
     - Tidak bekerja dengan baik ketika kumpulan data memiliki lebih banyak noise.
-    - Ketika kelas dalam data adalah titik yang tidak dipisahkan dengan baik, yang berarti ada kelas yang tumpang tindih, SVM tidak bekerja dengan baik.
+    - Ketika kelas dalam data adalah titik yang tidak dipisahkan dengan baik, yang berarti ada kelas yang tumpang tindih, _SVC_ tidak bekerja dengan baik.
+  - Parameter
+    - _gamma_: 'auto'
+
+Parameters
+- _n_estimators_: Jumlah pohon/_tree_ di dalam hutan/_forest_.
+- _max_depth_: Kedalaman maksimum dari pohon/_tree_.
+- _random_state_: Mengontrol keacakan sampel.
+- _n_jobs_: Jumlah _jobs_ yang akan dijalankan secara paralel. Jika parameter bernilai ```-1``` maka semua proses berjalan secara paralel.
+- gamma: Yang menentukan jumlah kelengkungan dalam batas keputusan. Ini menentukan seberapa jauh pengaruh dari satu contoh pelatihan mencapai, dengan nilai rendah yang berarti 'jauh' dan nilai tinggi yang berarti 'dekat'. Jika ```gamma='scale'``` (_default_) maka akan menggunakan $1 \over (n_features * X.var())$ sebagai nilai gamma, jika ```gamma='auto'``` menggunakan value $1 \over n_features$ sebagai nilai gamma dan jika menginputkan nilai value _float_ harus nilai non negatif.
+- _criterion_: Fungsi untuk mengukur kualitas split. Kriteria yang didukung adalah ```'gini'```, ```'log_loss'``` dan ```'entropy'```.
+- _learning_rate_: Jumlah pengurangan error untuk mencegah _overfitting_
+- _C_: Parameter regularisasi yang mengontrol _trade-off_ antara batas keputusan dan istilah misklasifikasi. Semakin tinggi nilai C, semakin sulit marginnya, dan semakin banyak titik data yang cenderung diklasifikasikan dengan benar.
+- _kernel_: Menentukan jenis kernel yang akan digunakan dalam algoritma. Jika tidak ada yang diberikan, ```'rbf'``` akan digunakan. Ada beberapa kernel standar, contohnya kernel linier, kernel polinomial, dan kernel radial. Pilihan kernel dan _hyperparameter_-nya sangat memengaruhi keterpisahan kelas (dalam klasifikasi) dan kinerja algoritma.
+- _max_iter_: Jumlah iterasi maksimal.
+- _cv_: Menentukan strategi _cross-validation splitting_. Jika inputan ```None``` maka akan menggunakan _5-fold_ _cross-validation_, jika inputan nilai integer untuk menentukan jumlah _fold_ dalam bentuk ```(Stratified)KFold```.
+
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
@@ -248,26 +238,32 @@ Models
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
 
-- Accuracy
-- Precission
-- Recall
-- ROC AUC
-- Confussion Matrix
-- F1 Score
+- _Accuracy_
+- _Precission_
+- _Recall_
+- _ROC AUC_
+- _Confusion Matrix_
+- _F1 Score_
 
-### Accuracy
+_**Note**_:
+- TP: *True Positive* adalah nilai positif yang diprediksi dengan benar
+- TN: *True Negative* adalah nilai negatif yang diprediksi dengan benar
+- FP: *False Positive* adalah nilai positif yang diprediksi dengan salah
+- FN: *False Negative* adalah nilai negatif yang diprediksi dengan salah
 
-### Precission
+### _Accuracy_
 
-### Recall
+### _Precission_
 
-### ROC AUC
+### _Recall_
 
-### Confussion Matrix
+### _ROC AUC_
 
-### F1 Score
+### _Confusion Matrix_
 
-Tabel 3. Classification report untuk model Logistic Regression
+### _F1 Score_
+
+Tabel 3. _Classification report_ untuk model _Logistic Regression_
 
 | |Precission|Recall|F1 Score|Support|
 |-|----------|------|--------|-------|
@@ -277,7 +273,7 @@ Tabel 3. Classification report untuk model Logistic Regression
 |Marcro Avg|0.82|0.82|0.82|2445|
 |Weighted Avg|0.85|0.85|0.85|2445|
 
-Tabel 4. Classification report untuk model Random Forest Classifier
+Tabel 4. _Classification report_ untuk model _Random Forest Classifier_
 
 | |Precission|Recall|F1 Score|Support|
 |-|----------|------|--------|-------|
@@ -287,7 +283,7 @@ Tabel 4. Classification report untuk model Random Forest Classifier
 |Marcro Avg|0.81|0.82|0.81|2445|
 |Weighted Avg|0.85|0.84|0.84|2445|
 
-Tabel 5. Classification report untuk model XGBoost
+Tabel 5. _Classification report_ untuk model _XGBoost_
 
 | |Precission|Recall|F1 Score|Support|
 |-|----------|------|--------|-------|
@@ -297,7 +293,7 @@ Tabel 5. Classification report untuk model XGBoost
 |Marcro Avg|0.81|0.82|0.82|2445|
 |Weighted Avg|0.85|0.84|0.85|2445|
 
-Tabel 6. Classification report untuk model Support Vector Classifier
+Tabel 6. _Classification report_ untuk model _Support Vector Classifier_
 
 | |Precission|Recall|F1 Score|Support|
 |-|----------|------|--------|-------|
@@ -307,7 +303,7 @@ Tabel 6. Classification report untuk model Support Vector Classifier
 |Marcro Avg|0.82|0.82|0.82|2445|
 |Weighted Avg|0.85|0.85|0.85|2445|
 
-Tabel 7. Hasil akhir model setelah hyperparameter tuning
+Tabel 7. Hasil akhir model setelah _hyperparameter tuning_
 
 |Model|Accuracy|ROC AUC|
 |-----|--------|-------|
