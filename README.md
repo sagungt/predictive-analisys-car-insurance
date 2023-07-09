@@ -61,7 +61,7 @@ Menjelaskan tujuan dari pernyataan masalah:
     \end{array}
     ```
 - Untuk metode peningkatam model, kita akan melakukan:
-  - *Hyperparameter tuning* untuk model, teknik yang dipakai menggunakan *GridSearchSV*.
+  - *Hyperparameter tuning* untuk model, teknik yang dipakai menggunakan *GridSearchCV*.
   - Menganalisis fitur-fitur yang paling berdampak pada model, teknik yang dipakai menggunakan *RFECV* (*Recursive Feature Elimination with Cross Validation*).
  
 Setalah model yang dibuat sudah cukup optimal, kita sudah bisa melanjutkannya ke tahap implementasi. Perusahaan asuransi yang ingin menerapkan model prediksi ini untuk tahap awal atau tolak ukur awal ketika pelanggan melakukan pengajuan asuransi dan dapat melihat hasilnya. Tetapi model ini tidak harus dipakai untuk *tools* dalam *decision maker* di tahap akhir, melainkan digunakan untuk tahap awal sebagai *insight*. Beberapa perusahaan mungkin memiliki ketentuan-ketentuan tambahan dalam tahap persetujuan pengajuan asuransi.
@@ -216,7 +216,7 @@ _Models_
   - Parameter
     - _gamma_: 'auto'
 
-Parameters
+_Parameters_
 - _n_estimators_: Jumlah pohon/_tree_ di dalam hutan/_forest_.
 - _max_depth_: Kedalaman maksimum dari pohon/_tree_.
 - _random_state_: Mengontrol keacakan sampel.
@@ -229,11 +229,92 @@ Parameters
 - _max_iter_: Jumlah iterasi maksimal.
 - _cv_: Menentukan strategi _cross-validation splitting_. Jika inputan ```None``` maka akan menggunakan _5-fold_ _cross-validation_, jika inputan nilai integer untuk menentukan jumlah _fold_ dalam bentuk ```(Stratified)KFold```.
 
+_Hypermarameter tuning_ menggunakan _GridSearchCV_ dengan menginputkan daftar parameter dalam bentuk _array/list_. _GridSearchCV_ adalah fungsi yang hadir dalam paket _model_selection_ Scikit-learn (atau SK-learn).
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+- _Parameter tuning_ untuk model _Logistic Regression_:
+  ```
+  parameters = {
+    'C': [0.25, 0.5, 0.75, 1],
+    'random_state': [0],
+    'max_iter': [200, 250, 300],
+  }
+  ```
+  Hasil:
+  ```
+  ({'C': 0.5, 'max_iter': 200, 'random_state': 0}, 0.8807963365542779)
+  ```
+- _Parameter tuning_ untuk model _Random Forest Classifier_:
+  ```
+  parameters = {
+    'max_depth': [10, 12, 13],
+    'n_estimators': [100, 150, 200],
+    'criterion': ['gini','entropy'],
+    'random_state': [0]
+  }
+  ```
+  Hasil:
+  ```
+  ({
+  'criterion': 'gini',
+  'max_depth': 10,
+  'n_estimators': 100,
+  'random_state': 0
+  }, 0.8671553497942387)
+   ```
+- _Parameter tuning_ untuk model _XGBoost_:
+  ```
+  parameters = {
+    "max_depth": [ 3, 4, 5, 6, 8],
+    'learning_rate': [0.01, 0.05, 0.1],
+    'eval_metric': ['error'],
+  }
+  ```
+  Hasil:
+  ```
+  ({'eval_metric': 'error', 'learning_rate': 0.1, 'max_depth': 4}, 0.8806666446242737)
+  ```
+- _Parameter tuning_ untuk model _SVC_:
+  ```
+  parameters = {
+    'C': [0.25, 0.5, 0.75, 1],
+    'gamma': ['auto'],
+    'kernel': ['linear','rbf']
+  }
+  ```
+  Hasil:
+  ```
+  ({'C': 0.25, 'gamma': 'auto', 'kernel': 'linear'}, 0.8796390282611032)
+  ```
+
+Analisis fitur-fitur paling berdapkan pada model menggunakan _RFECV_.
+
+_RFECV_ (_Recursive Feature Elimination with Cross Validation_) merupakan metode feature elimination yang bekerja secara rekursif mengeliminasi fitur dengan menggunakan Cross Validation juga untuk mencari fitur yang paling optimal.
+
+```
+clf_rf_rfecv = RandomForestClassifier()
+rfecv = RFECV(estimator=clf_rf_rfecv, step=1, cv=5, scoring='accuracy', verbose=2)
+rfecv = rfecv.fit(X_train, y_train)
+
+print('Optimal number of features :', rfecv.n_features_)
+print('Best features :', X_copy.columns[rfecv.support_])
+```
+Hasil:
+```
+Optimal number of features : 37
+Best features : Index(['CREDIT_SCORE', 'ANNUAL_MILEAGE', 'SPEEDING_VIOLATIONS',
+       'PAST_ACCIDENTS', 'AGE_16-25', 'AGE_26-39', 'AGE_40-64', 'AGE_65+',
+       'GENDER_female', 'GENDER_male', 'DRIVING_EXPERIENCE_0-9y',
+       'DRIVING_EXPERIENCE_10-19y', 'DRIVING_EXPERIENCE_20-29y',
+       'DRIVING_EXPERIENCE_30y+', 'EDUCATION_high school', 'EDUCATION_none',
+       'EDUCATION_university', 'INCOME_middle class', 'INCOME_poverty',
+       'INCOME_upper class', 'INCOME_working class', 'VEHICLE_OWNERSHIP_0.0',
+       'VEHICLE_OWNERSHIP_1.0', 'VEHICLE_YEAR_after 2015',
+       'VEHICLE_YEAR_before 2015', 'MARRIED_0.0', 'MARRIED_1.0',
+       'CHILDREN_0.0', 'CHILDREN_1.0', 'POSTAL_CODE_10238',
+       'POSTAL_CODE_21217', 'POSTAL_CODE_32765', 'POSTAL_CODE_92101', 'DUIS_0',
+       'DUIS_1', 'RACE_majority', 'RACE_minority'],
+      dtype='object')
+```
 
 ## Evaluation
 Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
@@ -251,17 +332,38 @@ _**Note**_:
 - FP: *False Positive* adalah nilai positif yang diprediksi dengan salah
 - FN: *False Negative* adalah nilai negatif yang diprediksi dengan salah
 
-### _Accuracy_
-
-### _Precission_
-
-### _Recall_
-
-### _ROC AUC_
-
 ### _Confusion Matrix_
-
+_Confusion Matrix_ adalah petak informasi yang menunjukkan jumlah _True Positives_ [TP], _False Positives_ [FP], _True Negatives_ [TN], dan _False Negatives_ [FN] yang dikembalikan saat menerapkan kumpulan uji data ke algoritma klasifikasi. Dengan menggunakan _Confusion Matrix_ kita dapat mempelajari berapa kali model Anda membuat prediksi yang benar dan salah.
+### _Accuracy_
+_Accuracy_ memberi tahu kita berapa persentase prediksi yang benar dari model tersebut. Dengan menggunakan informasi ini, kami dapat menebak secara kasar berapa banyak prediksi masa depan kami yang salah jika model kami diterapkan dalam produksi. Semakin tinggi akurasinya, semakin baik.
+```math
+\begin{array}{rcl}
+accuracy & = & \dfrac{TP + TN}{TP + FP + TN + FN}
+\end{array}
+```
+### _Precission_
+_Precission_ adalah persentase dari identifikasi positif yang dibuat oleh model yang benar. Dengan menggunakan _precission_, kita dapat memahami berapa banyak gambar yang dikatakan berisi objek yang benar-benar berisi objek yang diidentifikasi oleh model.
+```math
+\begin{array}{rcl}
+precission & = & \dfrac{TP}{TP + FP}
+\end{array}
+```
+### _Recall_
+_Recall_ merupakan metrik yang umum digunakan untuk model klasifikasi, adalah pecahan positif yang diklasifikasikan dengan benar. _Recall_ juga disebut sebagai _"true positive rate"_, _"sensitivity"_ dan _"hit rate"_.
+```math
+\begin{array}{rcl}
+recall & = & \dfrac{TP}{TP + FN}
+\end{array}
+```
 ### _F1 Score_
+_F1 score_ (juga dikenal sebagai _F-measure_, atau _balanced F-score_) adalah metrik yang digunakan untuk mengukur performa model _machine learning_ klasifikasi. Ini adalah metrik populer yang digunakan untuk model klasifikasi karena memberikan hasil yang kuat untuk kumpulan data seimbang dan tidak seimbang, tidak seperti akurasi. _F1 score_ adalah metrik _error_ yang mengukur kinerja model dengan menghitung rata-rata harmonik _precission_ dan _recall_ untuk kelas positif minoritas.
+```math
+\begin{array}{rcl}
+F1 & = & \dfrac{2 * precission * recall}{precission + recall}
+\end{array}
+```
+### _ROC AUC_
+Kurva ROC-AUC adalah pengukuran kinerja untuk masalah klasifikasi pada berbagai pengaturan ambang batas. ROC adalah kurva probabilitas dan AUC mewakili tingkat atau ukuran keterpisahan. Ini memberi tahu seberapa banyak model mampu membedakan antar kelas. Semakin tinggi AUC, semakin baik model dalam memprediksi 0 kelas sebagai 0 dan 1 kelas sebagai 1.
 
 Tabel 3. _Classification report_ untuk model _Logistic Regression_
 
@@ -312,17 +414,6 @@ Tabel 7. Hasil akhir model setelah _hyperparameter tuning_
 |XGBoost|84.417178|0.915|
 |Support Vector Classifier|84.826176|0.916|
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
+Setelah _hyperparameter tuning_, tetap model _Logistic Regression_ yang menghasilkan akurasi tertinggi dengan nilai 84% dan model yang lain mendapat peningkatan akurasi. Selain akurasi tinggi model ini menghasilkan nilai _ROC AUC_ tertinggi yaitu dengan nilai 0.918. Model ini sudah cukup bagus untuk bisa memprediksi pengajuan asuransi.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+## Daftar Referensi
