@@ -126,23 +126,26 @@ Data ini memiliki outliers seperti yang ditunjukan pada _box plot_ di Gambar 1, 
 
 Pada diagram _violin plot_ bagian fitur ANNUAL_MILEAGE dan CREDIT_SCORE ada sedikit korelasi terhadap OUTCOME, terlihat dari perbedaan posisi cembungan. 
 
-Gambar 1. Violin Plot & Box Plot
+Gambar 1. _Violin Plot_ & _Box Plot_
+![Violin & Box Plot](img/violin&box.png)
 
-Gambar 2. Correlation Matrix setelah preprocessing data
+Gambar 2. _Correlation Matrix_ setelah preprocessing data
+![Correlation Matrix](img/corrmatrix.png)
 
 Terlihat diagram kategorikal di Gambar 3 pada fitur AGE umur 16-25, DRIVING_EXPERIENCE 0-9 tahun pengalaman dan INCOME kategori _poverty_ berpeluang tinggi untuk dapat mengeklaim asuransi.
 
 Gambar 3. Diagram Categorical Features
+![Categorical Features](img/categorical.png)
 
 ## Data Preparation
 Teknik-teknik yang dilakukan untuk Data Preparation untuk model yang optimal.
 
 - Pada dataset ini terdapat nilai-nilai yang kosong sebanyak 1851 baris. Untuk mengatasi ini kita lakukan cara termudah yaitu dengan menghapus baris-baris yang memiliki nilai kosong.
-- _LabelEncoding_
-- _OneHotEncoding_
-- _TrainTestSplit_
-- _Oversampling_
-- _StandardScaler_
+- _LabelEncoding_: _Encode_ label target dengan nilai antara 0 dan _n_classes-1_. [3]
+- _OneHotEncoding_: _Encode_ fitur kategorikal sebagai _array_ numerik _one-hot_. [3]
+- _TrainTestSplit_: Membagi _array_ atau _matrix_ menjadi _subset train_ dan _test_ secara acak. [3]
+- _Oversampling_: Salah satu pendekatan untuk mengatasi masalah ketidakseimbangan kelas adalah dengan sampel ulang / _resampling_ dataset pelatihan secara acak. Dua pendekatan utama untuk melakukan _resampling_ secara acak pada kumpulan data yang tidak seimbang adalah dengan menghapus data dari kelas mayoritas, yang disebut _undersampling_, dan menduplikasi data dari kelas minoritas, yang disebut _oversampling_. [4]
+- _StandardScaler_: Standarisasi fitur dengan mengatur ulang _mean_ dan penskalaan varian satuan. [3]
 
 ## Modeling
 Tahapan ini membahas mengenai model _machine learning_ yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
@@ -159,13 +162,15 @@ Pada Tabel 2 menunjukan algoritma _Logistic Regression_ dan _SVC_ menghasilkan t
 
 Gambar 4. Perbandingan hasil accuracy setiap model
 
+![Base model accuracies](img/basemodel.png)
+
 _Model_ yang digunakan
 
 _Models_
 - _Logistic Regression_
   adalah teknik analisis data yang menggunakan matematika untuk menemukan hubungan antara dua faktor data. Kemudian menggunakan hubungan ini untuk memprediksi nilai salah satu faktor berdasarkan yang lain. Prediksi biasanya memiliki jumlah hasil yang terbatas, seperti ya atau tidak.
 
-  _Logistic regression_ adalah model statistik yang menggunakan fungsi logistik, atau fungsi logit, dalam matematika sebagai persamaan antara x dan y. Fungsi logit memetakan y sebagai fungsi sigmoid dari x. $f(x)$ = $1 \over 1 + e^{-x}$ []
+  _Logistic regression_ adalah model statistik yang menggunakan fungsi logistik, atau fungsi logit, dalam matematika sebagai persamaan antara x dan y. Fungsi logit memetakan y sebagai fungsi sigmoid dari x. $f(x)$ = $1 \over 1 + e^{-x}$ [5]
   - Kelebihan
     - Simple untuk diimplementasikan.
     - Terbukti sangat efisien ketika dataset memiliki fitur yang dapat dipisahkan secara linear.
@@ -177,7 +182,7 @@ _Models_
   - Parameter
     - _random_state_: 200
 - _Random Forest Classifier_
-  adalah algoritma _machine learning_ yang fleksibel dan mudah digunakan yang menghasilkan, bahkan tanpa penyetelan _hyperparameter_, hasil yang bagus di sebagian besar waktu. Ini juga merupakan salah satu algoritma yang paling banyak digunakan, karena kesederhanaan dan keragamannya (dapat digunakan untuk tugas klasifikasi dan regresi). _Random Forest_ merupakan algoritma _supervised learning_. "Hutan/_Forest_" yang dibangun adalah _ensemble_/rombongan dari _decision tree_, biasanya dilatih dengan metode _bagging_. Gagasan utama metode _bagging_ adalah bahwa kombinasi model pembelajaran meningkatkan hasil keseluruhan. []
+  adalah algoritma _machine learning_ yang fleksibel dan mudah digunakan yang menghasilkan, bahkan tanpa penyetelan _hyperparameter_, hasil yang bagus di sebagian besar waktu. Ini juga merupakan salah satu algoritma yang paling banyak digunakan, karena kesederhanaan dan keragamannya (dapat digunakan untuk tugas klasifikasi dan regresi). _Random Forest_ merupakan algoritma _supervised learning_. "Hutan/_Forest_" yang dibangun adalah _ensemble_/rombongan dari _decision tree_, biasanya dilatih dengan metode _bagging_. Gagasan utama metode _bagging_ adalah bahwa kombinasi model pembelajaran meningkatkan hasil keseluruhan. [6]
   - Kelebihan
     - Fleksibel untuk masalah klasifikasi dan regresi.
     - Mengurangi _overfitting_ di pohon keputusan dan membantu meningkatkan akurasi.
@@ -192,7 +197,9 @@ _Models_
     - _random_state_: 123
     - _n_jobs_: -1
 - _XGBoost_
-  (_Extreme Gradient Boosting_) adalah implementasi dari algoritma _gradient boosted trees_ yang _open-source_ yang populer dan efisien. _Gradient boosting_ adalah algoritma _supervised learning_, yang mencoba untuk memprediksi variabel target secara akurat dengan menggabungkan estimasi dari sekumpulan model yang lebih sederhana dan lebih lemah.
+  (_Extreme Gradient Boosting_) adalah implementasi dari algoritma _gradient boosted trees_ yang _open-source_ yang populer dan efisien. _Gradient boosting_ adalah algoritma _supervised learning_, yang mencoba untuk memprediksi variabel target secara akurat dengan menggabungkan estimasi dari sekumpulan model yang lebih sederhana dan lebih lemah. [7]
+  Gambar 5. Ilustrasi _XGBoost_
+  ![XGBoost explanation](img/xbg.png)
   - Kelebihan
     - Dirancang untuk pelatihan model yang efisien dan dapat *scalable*, sehingga cocok untuk kumpulan data besar.
     - Memiliki berbagai _hyperparameter_ yang dapat disesuaikan untuk mengoptimalkan kinerja, membuatnya sangat mudah disesuaikan.
@@ -204,7 +211,7 @@ _Models_
     - Dapat memakan banyak memori, terutama saat bekerja dengan kumpulan data besar, membuatnya kurang cocok untuk sistem dengan sumber daya memori terbatas.
 - _Support Vector Classifier (SVC/SVM)_ adalah algoritmat _supervised learning_ yang bisa digunakan untuk regresi dan klasifikasi. Karena ketangguhannya, umumnya diterapkan untuk menyelesaikan tugas klasifikasi. Dalam algoritma ini, titik data pertama kali direpresentasikan dalam ruang n-dimensi. Algoritma kemudian menggunakan pendekatan statistik untuk menemukan garis terbaik yang memisahkan berbagai kelas yang ada dalam data.
 
-    Jika titik data diplot dalam grafik 2 dimensi, maka batas keputusan disebut sebagai garis lurus. Namun, jika ada lebih dari dua dimensi, ini disebut sebagai _hyperplanes_. Meskipun mungkin ada beberapa _hyperplane_ yang memisahkan kelas, SVM memilih satu dengan jarak maksimum antar kelas. Scikit-Learn menyediakan dua pengklasifikasi lainnya — SVC() dan NuSVC() yang digunakan untuk tujuan klasifikasi.
+    Jika titik data diplot dalam grafik 2 dimensi, maka batas keputusan disebut sebagai garis lurus. Namun, jika ada lebih dari dua dimensi, ini disebut sebagai _hyperplanes_. Meskipun mungkin ada beberapa _hyperplane_ yang memisahkan kelas, SVM memilih satu dengan jarak maksimum antar kelas. Scikit-Learn menyediakan dua pengklasifikasi lainnya — SVC() dan NuSVC() yang digunakan untuk tujuan klasifikasi. [8]
   - Kelebihan
     - Bekerja relatif baik ketika ada batas pemisahan yang jelas antara kelas.
     - Lebih efektif dalam ruang dimensi tinggi dan relatif hemat memori.
@@ -217,17 +224,17 @@ _Models_
     - _gamma_: 'auto'
 
 _Parameters_
-- _n_estimators_: Jumlah pohon/_tree_ di dalam hutan/_forest_.
-- _max_depth_: Kedalaman maksimum dari pohon/_tree_.
-- _random_state_: Mengontrol keacakan sampel.
-- _n_jobs_: Jumlah _jobs_ yang akan dijalankan secara paralel. Jika parameter bernilai ```-1``` maka semua proses berjalan secara paralel.
-- gamma: Yang menentukan jumlah kelengkungan dalam batas keputusan. Ini menentukan seberapa jauh pengaruh dari satu contoh pelatihan mencapai, dengan nilai rendah yang berarti 'jauh' dan nilai tinggi yang berarti 'dekat'. Jika ```gamma='scale'``` (_default_) maka akan menggunakan $1 \over (n_features * X.var())$ sebagai nilai gamma, jika ```gamma='auto'``` menggunakan value $1 \over n_features$ sebagai nilai gamma dan jika menginputkan nilai value _float_ harus nilai non negatif.
-- _criterion_: Fungsi untuk mengukur kualitas split. Kriteria yang didukung adalah ```'gini'```, ```'log_loss'``` dan ```'entropy'```.
-- _learning_rate_: Jumlah pengurangan error untuk mencegah _overfitting_
-- _C_: Parameter regularisasi yang mengontrol _trade-off_ antara batas keputusan dan istilah misklasifikasi. Semakin tinggi nilai C, semakin sulit marginnya, dan semakin banyak titik data yang cenderung diklasifikasikan dengan benar.
-- _kernel_: Menentukan jenis kernel yang akan digunakan dalam algoritma. Jika tidak ada yang diberikan, ```'rbf'``` akan digunakan. Ada beberapa kernel standar, contohnya kernel linier, kernel polinomial, dan kernel radial. Pilihan kernel dan _hyperparameter_-nya sangat memengaruhi keterpisahan kelas (dalam klasifikasi) dan kinerja algoritma.
-- _max_iter_: Jumlah iterasi maksimal.
-- _cv_: Menentukan strategi _cross-validation splitting_. Jika inputan ```None``` maka akan menggunakan _5-fold_ _cross-validation_, jika inputan nilai integer untuk menentukan jumlah _fold_ dalam bentuk ```(Stratified)KFold```.
+- _n_estimators_: Jumlah pohon/_tree_ di dalam hutan/_forest_. [3]
+- _max_depth_: Kedalaman maksimum dari pohon/_tree_. [3]
+- _random_state_: Mengontrol keacakan sampel. [3]
+- _n_jobs_: Jumlah _jobs_ yang akan dijalankan secara paralel. Jika parameter bernilai ```-1``` maka semua proses berjalan secara paralel. [3]
+- gamma: Yang menentukan jumlah kelengkungan dalam batas keputusan. Ini menentukan seberapa jauh pengaruh dari satu contoh pelatihan mencapai, dengan nilai rendah yang berarti 'jauh' dan nilai tinggi yang berarti 'dekat'. Jika ```gamma='scale'``` (_default_) maka akan menggunakan $1 \over (n_features * X.var())$ sebagai nilai gamma, jika ```gamma='auto'``` menggunakan value $1 \over n_features$ sebagai nilai gamma dan jika menginputkan nilai value _float_ harus nilai non negatif. [3]
+- _criterion_: Fungsi untuk mengukur kualitas split. Kriteria yang didukung adalah ```'gini'```, ```'log_loss'``` dan ```'entropy'```. [3]
+- _learning_rate_: Jumlah pengurangan error untuk mencegah _overfitting_ [4]
+- _C_: Parameter regularisasi yang mengontrol _trade-off_ antara batas keputusan dan istilah misklasifikasi. Semakin tinggi nilai C, semakin sulit marginnya, dan semakin banyak titik data yang cenderung diklasifikasikan dengan benar. [3]
+- _kernel_: Menentukan jenis kernel yang akan digunakan dalam algoritma. Jika tidak ada yang diberikan, ```'rbf'``` akan digunakan. Ada beberapa kernel standar, contohnya kernel linier, kernel polinomial, dan kernel radial. Pilihan kernel dan _hyperparameter_-nya sangat memengaruhi keterpisahan kelas (dalam klasifikasi) dan kinerja algoritma. [3]
+- _max_iter_: Jumlah iterasi maksimal. [3]
+- _cv_: Menentukan strategi _cross-validation splitting_. Jika inputan ```None``` maka akan menggunakan _5-fold_ _cross-validation_, jika inputan nilai integer untuk menentukan jumlah _fold_ dalam bentuk ```(Stratified)KFold```. [3]
 
 _Hypermarameter tuning_ menggunakan _GridSearchCV_ dengan menginputkan daftar parameter dalam bentuk _array/list_. _GridSearchCV_ adalah fungsi yang hadir dalam paket _model_selection_ Scikit-learn (atau SK-learn).
 
@@ -288,7 +295,7 @@ _Hypermarameter tuning_ menggunakan _GridSearchCV_ dengan menginputkan daftar pa
 
 Analisis fitur-fitur paling berdapkan pada model menggunakan _RFECV_.
 
-_RFECV_ (_Recursive Feature Elimination with Cross Validation_) merupakan metode feature elimination yang bekerja secara rekursif mengeliminasi fitur dengan menggunakan Cross Validation juga untuk mencari fitur yang paling optimal.
+_RFECV_ (_Recursive Feature Elimination with Cross Validation_) merupakan metode feature elimination yang bekerja secara rekursif mengeliminasi fitur dengan menggunakan Cross Validation juga untuk mencari fitur yang paling optimal. [3]
 
 ```
 clf_rf_rfecv = RandomForestClassifier()
@@ -333,37 +340,43 @@ _**Note**_:
 - FN: *False Negative* adalah nilai negatif yang diprediksi dengan salah
 
 ### _Confusion Matrix_
-_Confusion Matrix_ adalah petak informasi yang menunjukkan jumlah _True Positives_ [TP], _False Positives_ [FP], _True Negatives_ [TN], dan _False Negatives_ [FN] yang dikembalikan saat menerapkan kumpulan uji data ke algoritma klasifikasi. Dengan menggunakan _Confusion Matrix_ kita dapat mempelajari berapa kali model Anda membuat prediksi yang benar dan salah.
+_Confusion Matrix_ adalah petak informasi yang menunjukkan jumlah _True Positives_ [TP], _False Positives_ [FP], _True Negatives_ [TN], dan _False Negatives_ [FN] yang dikembalikan saat menerapkan kumpulan uji data ke algoritma klasifikasi. Dengan menggunakan _Confusion Matrix_ kita dapat mempelajari berapa kali model Anda membuat prediksi yang benar dan salah. [9]
+Gambar 6. _Confusion Matrix_
+![Confision Matrix](img/cf.png)
 ### _Accuracy_
-_Accuracy_ memberi tahu kita berapa persentase prediksi yang benar dari model tersebut. Dengan menggunakan informasi ini, kami dapat menebak secara kasar berapa banyak prediksi masa depan kami yang salah jika model kami diterapkan dalam produksi. Semakin tinggi akurasinya, semakin baik.
+_Accuracy_ memberi tahu kita berapa persentase prediksi yang benar dari model tersebut. Dengan menggunakan informasi ini, kami dapat menebak secara kasar berapa banyak prediksi masa depan kami yang salah jika model kami diterapkan dalam produksi. Semakin tinggi akurasinya, semakin baik. [9]
 ```math
 \begin{array}{rcl}
 accuracy & = & \dfrac{TP + TN}{TP + FP + TN + FN}
 \end{array}
 ```
 ### _Precission_
-_Precission_ adalah persentase dari identifikasi positif yang dibuat oleh model yang benar. Dengan menggunakan _precission_, kita dapat memahami berapa banyak gambar yang dikatakan berisi objek yang benar-benar berisi objek yang diidentifikasi oleh model.
+_Precission_ adalah persentase dari identifikasi positif yang dibuat oleh model yang benar. Dengan menggunakan _precission_, kita dapat memahami berapa banyak gambar yang dikatakan berisi objek yang benar-benar berisi objek yang diidentifikasi oleh model. [9]
 ```math
 \begin{array}{rcl}
 precission & = & \dfrac{TP}{TP + FP}
 \end{array}
 ```
 ### _Recall_
-_Recall_ merupakan metrik yang umum digunakan untuk model klasifikasi, adalah pecahan positif yang diklasifikasikan dengan benar. _Recall_ juga disebut sebagai _"true positive rate"_, _"sensitivity"_ dan _"hit rate"_.
+_Recall_ merupakan metrik yang umum digunakan untuk model klasifikasi, adalah pecahan positif yang diklasifikasikan dengan benar. _Recall_ juga disebut sebagai _"true positive rate"_, _"sensitivity"_ dan _"hit rate"_. [9]
 ```math
 \begin{array}{rcl}
 recall & = & \dfrac{TP}{TP + FN}
 \end{array}
 ```
 ### _F1 Score_
-_F1 score_ (juga dikenal sebagai _F-measure_, atau _balanced F-score_) adalah metrik yang digunakan untuk mengukur performa model _machine learning_ klasifikasi. Ini adalah metrik populer yang digunakan untuk model klasifikasi karena memberikan hasil yang kuat untuk kumpulan data seimbang dan tidak seimbang, tidak seperti akurasi. _F1 score_ adalah metrik _error_ yang mengukur kinerja model dengan menghitung rata-rata harmonik _precission_ dan _recall_ untuk kelas positif minoritas.
+_F1 score_ (juga dikenal sebagai _F-measure_, atau _balanced F-score_) adalah metrik yang digunakan untuk mengukur performa model _machine learning_ klasifikasi. Ini adalah metrik populer yang digunakan untuk model klasifikasi karena memberikan hasil yang kuat untuk kumpulan data seimbang dan tidak seimbang, tidak seperti akurasi. _F1 score_ adalah metrik _error_ yang mengukur kinerja model dengan menghitung rata-rata harmonik _precission_ dan _recall_ untuk kelas positif minoritas. [9]
+Gambar 7. Ilustrasi _Confusion Matrix, Accuracy, Precission, Recall_ dan _F1 Score_
+![Acc, precission, recall, f1 score](img/cf2.png)
 ```math
 \begin{array}{rcl}
 F1 & = & \dfrac{2 * precission * recall}{precission + recall}
 \end{array}
 ```
 ### _ROC AUC_
-Kurva ROC-AUC adalah pengukuran kinerja untuk masalah klasifikasi pada berbagai pengaturan ambang batas. ROC adalah kurva probabilitas dan AUC mewakili tingkat atau ukuran keterpisahan. Ini memberi tahu seberapa banyak model mampu membedakan antar kelas. Semakin tinggi AUC, semakin baik model dalam memprediksi 0 kelas sebagai 0 dan 1 kelas sebagai 1.
+Kurva ROC-AUC adalah pengukuran kinerja untuk masalah klasifikasi pada berbagai pengaturan ambang batas. ROC adalah kurva probabilitas dan AUC mewakili tingkat atau ukuran keterpisahan. Ini memberi tahu seberapa banyak model mampu membedakan antar kelas. Semakin tinggi AUC, semakin baik model dalam memprediksi 0 kelas sebagai 0 dan 1 kelas sebagai 1. [9]
+Gambar 8. Grafix AUC
+![AUC](img/auc.png)
 
 Tabel 3. _Classification report_ untuk model _Logistic Regression_
 
@@ -375,6 +388,13 @@ Tabel 3. _Classification report_ untuk model _Logistic Regression_
 |Marcro Avg|0.82|0.82|0.82|2445|
 |Weighted Avg|0.85|0.85|0.85|2445|
 
+Gambar 9. _Confission Matrix_ dan Grafil _AUC_ untuk model _Logistic Regression_
+
+![Confusion Matrix Logistic Regression](img/evallr.png)
+![AUC Logistic Regression](img/evallrauc.png)
+
+Skor _AUC_ mencapai 0.918 dengan _False Positive_ 189 dan _False Negative_ 182.
+
 Tabel 4. _Classification report_ untuk model _Random Forest Classifier_
 
 | |Precission|Recall|F1 Score|Support|
@@ -384,6 +404,13 @@ Tabel 4. _Classification report_ untuk model _Random Forest Classifier_
 |Accuracy|||0.84|2445|
 |Marcro Avg|0.81|0.82|0.81|2445|
 |Weighted Avg|0.85|0.84|0.84|2445|
+
+Gambar 10. _Confission Matrix_ dan Grafil _AUC_ untuk model _Random Forest Classifier_
+
+![Confusion Matrix Random Forest Classifier](img/evalrfcm.png)
+![AUC Random Forest Classifier](img/evalrfauc.png)
+
+Skor _AUC_ mencapai 0.908 dengan _False Positive_ 169 dan _False Negative_ 219.
 
 Tabel 5. _Classification report_ untuk model _XGBoost_
 
@@ -395,6 +422,13 @@ Tabel 5. _Classification report_ untuk model _XGBoost_
 |Marcro Avg|0.81|0.82|0.82|2445|
 |Weighted Avg|0.85|0.84|0.85|2445|
 
+Gambar 11. _Confission Matrix_ dan Grafil _AUC_ untuk model _XGBoost_
+
+![Confusion Matrix XGBoost](img/evalxgbcm.png)
+![AUC XGBoost](img/evalxgbauc.png)
+
+Skor _AUC_ mencapai 0.915 dengan _False Positive_ 172 dan _False Negative_ 209.
+
 Tabel 6. _Classification report_ untuk model _Support Vector Classifier_
 
 | |Precission|Recall|F1 Score|Support|
@@ -405,6 +439,13 @@ Tabel 6. _Classification report_ untuk model _Support Vector Classifier_
 |Marcro Avg|0.82|0.82|0.82|2445|
 |Weighted Avg|0.85|0.85|0.85|2445|
 
+Gambar 12. _Confission Matrix_ dan Grafil _AUC_ untuk model _Support Vector Classifier_
+
+![Confusion Matrix Support Vector Classifier](img/evalsvccm.png)
+![AUC Logistic Regression](img/evalsvcauc.png)
+
+Skor _AUC_ mencapai 0.916 dengan _False Positive_ 187 dan _False Negative_ 184.
+
 Tabel 7. Hasil akhir model setelah _hyperparameter tuning_
 
 |Model|Accuracy|ROC AUC|
@@ -414,6 +455,28 @@ Tabel 7. Hasil akhir model setelah _hyperparameter tuning_
 |XGBoost|84.417178|0.915|
 |Support Vector Classifier|84.826176|0.916|
 
+Gambar 13. Perbandingan skor _Accuracy_ setelah _hyperparameter tuning_.
+
+![Final Accuracy](img/evalacc.png)
+
 Setelah _hyperparameter tuning_, tetap model _Logistic Regression_ yang menghasilkan akurasi tertinggi dengan nilai 84% dan model yang lain mendapat peningkatan akurasi. Selain akurasi tinggi model ini menghasilkan nilai _ROC AUC_ tertinggi yaitu dengan nilai 0.918. Model ini sudah cukup bagus untuk bisa memprediksi pengajuan asuransi.
 
 ## Daftar Referensi
+
+[1] I Wayan Agus Satriya Wedhana Putra. Ida Ayu Sukihana. "KEDUDUKAN AGEN ASURANSI DI ERA DIGITAL DALAM MENAWARKAN PRODUK ASURANSI". Jurnal Kertha Semaya, Vol. 8 No. 3 Tahun 2020, hlm. 350-367. [https://ojs.unud.ac.id/index.php/kerthasemaya/article/download/57420/33615](https://ojs.unud.ac.id/index.php/kerthasemaya/article/download/57420/33615) [Accessed July 8 2023]
+
+[2] Eileen Burns, FSA, MAAA et al. "Considerations for Predictive Modeling in Insurance Applications". 2019 Society of Actuaries [https://www.soa.org/globalassets/assets/files/resources/research-report/2019/considerations-predictive-modeling.pdf](https://www.soa.org/globalassets/assets/files/resources/research-report/2019/considerations-predictive-modeling.pdf) [Accessed July 9 2023]
+
+[3] Boisberranger. J. D, et al.. "Scikit Learn Documentations". [https://scikit-learn.org/stable](https://scikit-learn.org/stable) [Accessed July 10 2023]
+
+[4] xgboost developer. "XGBoost Parameters". [https://xgboost.readthedocs.io/en/latest/parameter.html](https://xgboost.readthedocs.io/en/latest/parameter.html) [Accessed July 10 2023]
+
+[5] Amazon Web Service. "What Is Logistic Regression?". [https://aws.amazon.com/what-is/logistic-regression/](https://aws.amazon.com/what-is/logistic-regression/) [Accessed July 10 2023]
+
+[6] Mathew Urwin. "Random Forest: A Complete Guide for Machine Learning". [https://builtin.com/data-science/random-forest-algorithm](https://builtin.com/data-science/random-forest-algorithm) [Accessed July 9 2023]
+
+[7] Amazon Web Service. "How XGBoost Works". [https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost-HowItWorks.html](https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost-HowItWorks.html) [Accessed July 9 2023]
+
+[8] Ashwin Raj. "Everything About Support Vector Classification — Above and Beyond". [https://towardsdatascience.com/everything-about-svm-classification-above-and-beyond-cc665bfd993e](https://towardsdatascience.com/everything-about-svm-classification-above-and-beyond-cc665bfd993e) [Accessed July 9 2023]
+
+[9] Skyre Tran. "6 Useful Metrics to Evaluate Binary Classification Models". [https://towardsdatascience.com/6-useful-metrics-to-evaluate-binary-classification-models-55fd1fed6a20](https://towardsdatascience.com/6-useful-metrics-to-evaluate-binary-classification-models-55fd1fed6a20) [Accessed July 9 2023]
