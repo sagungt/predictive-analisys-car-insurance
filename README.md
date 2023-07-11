@@ -127,15 +127,15 @@ Data ini memiliki outliers seperti yang ditunjukan pada _box plot_ di Gambar 1, 
 Pada diagram _violin plot_ bagian fitur ANNUAL_MILEAGE dan CREDIT_SCORE ada sedikit korelasi terhadap OUTCOME, terlihat dari perbedaan posisi cembungan. 
 
 Gambar 1. _Violin Plot_ & _Box Plot_
-![Violin & Box Plot](img/violin&box.png)
+![Violin & Box Plot](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/violin%26box.png)
 
 Gambar 2. _Correlation Matrix_ setelah preprocessing data
-![Correlation Matrix](img/corrmatrix.png)
+![Correlation Matrix](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/corrmatrix.png)
 
 Terlihat diagram kategorikal di Gambar 3 pada fitur AGE umur 16-25, DRIVING_EXPERIENCE 0-9 tahun pengalaman dan INCOME kategori _poverty_ berpeluang tinggi untuk dapat mengeklaim asuransi.
 
 Gambar 3. Diagram Categorical Features
-![Categorical Features](img/categorical.png)
+![Categorical Features](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/categorical.png)
 
 ## Data Preparation
 Teknik-teknik yang dilakukan untuk Data Preparation untuk model yang optimal.
@@ -162,7 +162,7 @@ Pada Tabel 2 menunjukan algoritma _Logistic Regression_ dan _SVC_ menghasilkan t
 
 Gambar 4. Perbandingan hasil accuracy setiap model
 
-![Base model accuracies](img/basemodel.png)
+![Base model accuracies](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/basemodel.png)
 
 _Model_ yang digunakan
 
@@ -199,7 +199,7 @@ _Models_
 - _XGBoost_
   (_Extreme Gradient Boosting_) adalah implementasi dari algoritma _gradient boosted trees_ yang _open-source_ yang populer dan efisien. _Gradient boosting_ adalah algoritma _supervised learning_, yang mencoba untuk memprediksi variabel target secara akurat dengan menggabungkan estimasi dari sekumpulan model yang lebih sederhana dan lebih lemah. [7]
   Gambar 5. Ilustrasi _XGBoost_
-  ![XGBoost explanation](img/xbg.png)
+  ![XGBoost explanation](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/xbg.png)
   - Kelebihan
     - Dirancang untuk pelatihan model yang efisien dan dapat *scalable*, sehingga cocok untuk kumpulan data besar.
     - Memiliki berbagai _hyperparameter_ yang dapat disesuaikan untuk mengoptimalkan kinerja, membuatnya sangat mudah disesuaikan.
@@ -342,7 +342,7 @@ _**Note**_:
 ### _Confusion Matrix_
 _Confusion Matrix_ adalah petak informasi yang menunjukkan jumlah _True Positives_ [TP], _False Positives_ [FP], _True Negatives_ [TN], dan _False Negatives_ [FN] yang dikembalikan saat menerapkan kumpulan uji data ke algoritma klasifikasi. Dengan menggunakan _Confusion Matrix_ kita dapat mempelajari berapa kali model Anda membuat prediksi yang benar dan salah. [9]
 Gambar 6. _Confusion Matrix_
-![Confision Matrix](img/cf.png)
+![Confision Matrix](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/cf.png)
 ### _Accuracy_
 _Accuracy_ memberi tahu kita berapa persentase prediksi yang benar dari model tersebut. Dengan menggunakan informasi ini, kami dapat menebak secara kasar berapa banyak prediksi masa depan kami yang salah jika model kami diterapkan dalam produksi. Semakin tinggi akurasinya, semakin baik. [9]
 ```math
@@ -376,7 +376,7 @@ F1 & = & \dfrac{2 * precission * recall}{precission + recall}
 ### _ROC AUC_
 Kurva ROC-AUC adalah pengukuran kinerja untuk masalah klasifikasi pada berbagai pengaturan ambang batas. ROC adalah kurva probabilitas dan AUC mewakili tingkat atau ukuran keterpisahan. Ini memberi tahu seberapa banyak model mampu membedakan antar kelas. Semakin tinggi AUC, semakin baik model dalam memprediksi 0 kelas sebagai 0 dan 1 kelas sebagai 1. [9]
 Gambar 8. Grafix AUC
-![AUC](img/auc.png)
+![AUC](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/cf2.png)
 
 Tabel 3. _Classification report_ untuk model _Logistic Regression_
 
@@ -390,8 +390,8 @@ Tabel 3. _Classification report_ untuk model _Logistic Regression_
 
 Gambar 9. _Confission Matrix_ dan Grafil _AUC_ untuk model _Logistic Regression_
 
-![Confusion Matrix Logistic Regression](img/evallr.png)
-![AUC Logistic Regression](img/evallrauc.png)
+![Confusion Matrix Logistic Regression](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evallr.png)
+![AUC Logistic Regression](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evallrauc.png)
 
 Skor _AUC_ mencapai 0.918 dengan _False Positive_ 189 dan _False Negative_ 182.
 
@@ -407,8 +407,8 @@ Tabel 4. _Classification report_ untuk model _Random Forest Classifier_
 
 Gambar 10. _Confission Matrix_ dan Grafil _AUC_ untuk model _Random Forest Classifier_
 
-![Confusion Matrix Random Forest Classifier](img/evalrfcm.png)
-![AUC Random Forest Classifier](img/evalrfauc.png)
+![Confusion Matrix Random Forest Classifier](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalrfcm.png)
+![AUC Random Forest Classifier](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalrfauc.png)
 
 Skor _AUC_ mencapai 0.908 dengan _False Positive_ 169 dan _False Negative_ 219.
 
@@ -424,8 +424,8 @@ Tabel 5. _Classification report_ untuk model _XGBoost_
 
 Gambar 11. _Confission Matrix_ dan Grafil _AUC_ untuk model _XGBoost_
 
-![Confusion Matrix XGBoost](img/evalxgbcm.png)
-![AUC XGBoost](img/evalxgbauc.png)
+![Confusion Matrix XGBoost](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalxgbcm.png)
+![AUC XGBoost](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalxgbauc.png)
 
 Skor _AUC_ mencapai 0.915 dengan _False Positive_ 172 dan _False Negative_ 209.
 
@@ -441,8 +441,8 @@ Tabel 6. _Classification report_ untuk model _Support Vector Classifier_
 
 Gambar 12. _Confission Matrix_ dan Grafil _AUC_ untuk model _Support Vector Classifier_
 
-![Confusion Matrix Support Vector Classifier](img/evalsvccm.png)
-![AUC Logistic Regression](img/evalsvcauc.png)
+![Confusion Matrix Support Vector Classifier](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalsvccm.png)
+![AUC Logistic Regression](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalsvcauc.png)
 
 Skor _AUC_ mencapai 0.916 dengan _False Positive_ 187 dan _False Negative_ 184.
 
@@ -457,7 +457,7 @@ Tabel 7. Hasil akhir model setelah _hyperparameter tuning_
 
 Gambar 13. Perbandingan skor _Accuracy_ setelah _hyperparameter tuning_.
 
-![Final Accuracy](img/evalacc.png)
+![Final Accuracy](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalacc.png)
 
 Setelah _hyperparameter tuning_, tetap model _Logistic Regression_ yang menghasilkan akurasi tertinggi dengan nilai 84% dan model yang lain mendapat peningkatan akurasi. Selain akurasi tinggi model ini menghasilkan nilai _ROC AUC_ tertinggi yaitu dengan nilai 0.918. Model ini sudah cukup bagus untuk bisa memprediksi pengajuan asuransi.
 
