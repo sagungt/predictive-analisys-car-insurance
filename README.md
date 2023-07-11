@@ -6,7 +6,7 @@ Asuransi atau yang lebih dikenal dengan pertanggungan adalah sesuatu yang tidak 
 
 Jika dilihat untuk masa depan peran asuransi sangatlah penting bagi masyarakat diantaranya seperti antisipasi untuk kejadian yang tidak terduga, untuk menyusun rencana masa depan, keamanan finansial dan melindungi keluarga serta orang tercinta. Dengan semua manfaat yang diberikan asuransi masyarakat akan merasa tenang pada masa depan keluarganya. [1]
 
-Perusahaan asuransi pada tingkat yang berbeda mengadopsi pemodelan prediktif ke dalam praktik standar mereka, menjadikannya saat yang tepat untuk menyatukan pengalaman beberapa orang. Penting juga untuk memberikan pelajaran yang dipetik di industri dan aplikasi lain dan untuk mengidentifikasi area di mana para aktuaris dapat meningkatkan metode mereka. Karena ilmu data dan analitik prediktif berkembang pesat, tidak diragukan lagi akan ada peluang berkelanjutan untuk meningkatkan metodologi terkemuka saat ini, jadi kami menyertakan diskusi untuk mengatasi masalah agar tetap tidak tertinggal. [2]
+Perusahaan asuransi pada tingkat yang berbeda mengadopsi pemodelan prediktif ke dalam praktik standar mereka, menjadikannya saat yang tepat untuk menyatukan pengalaman beberapa orang. Penting juga untuk memberikan pelajaran yang dipetik di industri dan aplikasi lain dan untuk mengidentifikasi area di mana para aktuaris dapat meningkatkan metode mereka. Karena ilmu data dan analitik prediktif berkembang pesat, tidak diragukan lagi akan ada peluang berkelanjutan untuk meningkatkan metodologi terkemuka saat ini, jadi salah satu tujuan diskusi ini untuk mengatasi masalah agar tetap tidak tertinggal. [2]
 
 Oleh sebab itu diperlukan sebuah solusi untuk bisa memprediksi permohonan asuransi agar sebagai tolak ukur awal untuk menentukan apakah pelanggan layak mendapatkan asuransi. Untuk mencapai tingkat keberhasilan yang tinggi diperlukan data yang lengkap dan model yang optimal. Tentu saja penentuan persetujuan permohonan asuransi merupakan hal yang krusial bagi perusahaan. Model ini tidak sepenuhnya ditunjukan untuk _decision maker_ pada tahap akhir, tetapi bisa juga berguna sebagai _tools_ untuk *insight* awal yang memberikan hasil yang cepat.
 
@@ -25,15 +25,15 @@ Menjelaskan pernyataan masalah latar belakang:
 Menjelaskan tujuan dari pernyataan masalah:
 - Untuk memahami data dengan cara melakukan *Exploratory Data Analisys*:
   - Memahami data setiap fitur, tipe data serta mengkategorikan apakah numerikal atau kategorikal.
-  - Melakukan visualisasi data agar lebih mudah dipahami. Kali ini kita akan menggunakan beberapa visualisasi data yaitu *pie chart*, *bar chart*, *violin plot* dan *box plot*.
+  - Melakukan visualisasi data agar lebih mudah dipahami. Kali ini beberapa teknik visualisasi data yang akan digunakan yaitu *pie chart*, *bar chart*, *violin plot* dan *box plot*.
   - Melakukan analisis hubungan antara dua atau lebih fitur dalam dataset. Bisa dilakukan dengan *pair plot*, *correlation matrix*, dll.
 - Untuk mengolah data atau preprocessing dengan cara melakukan:
-  - Melakukan *handling null value*, dapat dilakukan dengan cara mengisi dengan nilai *mean*, *median* dll atau menghapusnya. Pada kali ini kita lakukan cara termudah dengan menghapus data yang null.
-  - Melakukan *encoding* terhadap fitur kategorikal, bisa menggunakan *One Hot Encoder* atau *Label Encoder*. Pada kali ini kita menggunakan keduanya.
-  - Mengatasi data tidak seimbang (*imbalance data*). Pada kali ini kita melakukan teknik *oversampling* dengan metode SMOTE (*Synthetic Minority Oversampling Technique*).
+  - Melakukan *handling null value*, dapat dilakukan dengan cara mengisi dengan nilai *mean*, *median* dll atau menghapusnya. Pendekatan yang akan dignakan sekarang yaitu menghapus data yang kosong/_null_.
+  - Melakukan *encoding* terhadap fitur kategorikal, bisa menggunakan *One Hot Encoder* atau *Label Encoder*. Pendekatan yang akan digunakan sekarang yaitu menggunakan keduanya _One Hot Encoder_ dan _Label Encoder_ mengikuti struktur fitur yang ada pada dataset.
+  - Mengatasi data tidak seimbang (*imbalance data*). Pendekatan yang akan dilakaukan yaitu dengan menggunakan teknik *oversampling* dengan metode SMOTE (*Synthetic Minority Oversampling Technique*).
   - Melakukan pembagian dataset untuk *train* dan *test* dengan rasio 7:3.
   - Malakukan *encoding* agar semua data dalam skala yang sama dengan menggunakan *Standard Scaler*.
-- Untuk menentukan model kita akan membandingkan menggukanan 4 algoritma klaasifikasi:
+- Pemilihan algoritma dilakukan dengan membandingkan menggukanan 4 algoritma klasifikasi:
   - Melakukan prediksi dengan *base model* menggunakan 4 algoritmat yaitu *Logistic Regression*, *Random Forest Classifier*, *XGBoost* dan *Support Vector Classifier*.
   - Menggunakan beberapa metrik untuk tolak ukur model yaitu *accuracy*, *precission*, *recall*, *confusion matrix*, *F1 Score* dan *ROC AUC*.
   - Formula untuk *accuracy*
@@ -60,11 +60,11 @@ Menjelaskan tujuan dari pernyataan masalah:
     F1 & = & \dfrac{2 * precission * recall}{precission + recall}
     \end{array}
     ```
-- Untuk metode peningkatam model, kita akan melakukan:
+- Untuk metode peningkatam model, teknik yang akan dilakukan:
   - *Hyperparameter tuning* untuk model, teknik yang dipakai menggunakan *GridSearchCV*.
   - Menganalisis fitur-fitur yang paling berdampak pada model, teknik yang dipakai menggunakan *RFECV* (*Recursive Feature Elimination with Cross Validation*).
  
-Setalah model yang dibuat sudah cukup optimal, kita sudah bisa melanjutkannya ke tahap implementasi. Perusahaan asuransi yang ingin menerapkan model prediksi ini untuk tahap awal atau tolak ukur awal ketika pelanggan melakukan pengajuan asuransi dan dapat melihat hasilnya. Tetapi model ini tidak harus dipakai untuk *tools* dalam *decision maker* di tahap akhir, melainkan digunakan untuk tahap awal sebagai *insight*. Beberapa perusahaan mungkin memiliki ketentuan-ketentuan tambahan dalam tahap persetujuan pengajuan asuransi.
+Setalah model yang dibuat sudah cukup optimal, model sudah bisa melanjutkannya ke tahap implementasi. Perusahaan asuransi yang ingin menerapkan model prediksi ini untuk tahap awal atau tolak ukur awal ketika pelanggan melakukan pengajuan asuransi dan dapat melihat hasilnya. Tetapi model ini tidak harus dipakai untuk *tools* dalam *decision maker* di tahap akhir, melainkan digunakan untuk tahap awal sebagai *insight*. Beberapa perusahaan mungkin memiliki ketentuan-ketentuan tambahan dalam tahap persetujuan pengajuan asuransi.
 
 ## Data Understanding
 Data asuransi mobil yang digunakan berasal dari Kaggle, data ini merupakan riwayat pengajuan asuransi ke sebuah perusahaan di suatu daerah, data ini berisi 18 fitur tentang informasi *client* asuransi dari perusahaan tersebut. Link Dataset: [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
@@ -77,7 +77,7 @@ Data asuransi mobil yang digunakan berasal dari Kaggle, data ini merupakan riway
 - DRIVING_EXPERIENCE: merupakan jumlah pengalaman berkendara.
 - EDUCATION: merupakan pendidikan terakhir pelanggan.
 - INCOME: merupakan pendapatan pelanggan. Dibagi menjadi 4 kategori yaitu *upper class*, *middle class*, *poverty* dan *working class*.
-- CREDIT_SCORE: merupakan seberapa besar kemungkinan Anda mengajukan klaim. Biasanya dihitung dari kelengkapan dokumen-dokumen yang diperlukan perusahaan.
+- CREDIT_SCORE: merupakan seberapa besar kemungkinan pelanggan mengajukan klaim. Biasanya dihitung dari kelengkapan dokumen-dokumen yang diperlukan perusahaan.
 - VEHICLE_YEAR: merupakan tahun keluaran mobil. Dibedakan hanya sebelum dan setelah 2015.
 - MARRIED: merupakan status apakah pelanggan sudah menikah.
 - CHILDREN: merupakan apakah pelanggan sudah memiliki anak.
@@ -126,21 +126,24 @@ Data ini memiliki outliers seperti yang ditunjukan pada _box plot_ di Gambar 1, 
 
 Pada diagram _violin plot_ bagian fitur ANNUAL_MILEAGE dan CREDIT_SCORE ada sedikit korelasi terhadap OUTCOME, terlihat dari perbedaan posisi cembungan. 
 
-Gambar 1. _Violin Plot_ & _Box Plot_
 ![Violin & Box Plot](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/violin%26box.png?raw=true)
 
-Gambar 2. _Correlation Matrix_ setelah preprocessing data
+Gambar 1. _Violin Plot_ & _Box Plot_
+
 ![Correlation Matrix](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/corrmatrix.png?raw=true)
+
+Gambar 2. _Correlation Matrix_ setelah preprocessing data
 
 Terlihat diagram kategorikal di Gambar 3 pada fitur AGE umur 16-25, DRIVING_EXPERIENCE 0-9 tahun pengalaman dan INCOME kategori _poverty_ berpeluang tinggi untuk dapat mengeklaim asuransi.
 
-Gambar 3. Diagram Categorical Features
 ![Categorical Features](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/categorical.png?raw=true)
+
+Gambar 3. Diagram Categorical Features
 
 ## Data Preparation
 Teknik-teknik yang dilakukan untuk Data Preparation untuk model yang optimal.
 
-- Pada dataset ini terdapat nilai-nilai yang kosong sebanyak 1851 baris. Untuk mengatasi ini kita lakukan cara termudah yaitu dengan menghapus baris-baris yang memiliki nilai kosong.
+- Pada dataset ini terdapat nilai-nilai yang kosong sebanyak 1851 baris. Untuk mengatasi ini, teknik yang akan digunakan yaitu dengan menghapus baris-baris yang memiliki nilai kosong karena simpel dan cepat.
 - _LabelEncoding_: _Encode_ label target dengan nilai antara 0 dan _n_classes-1_. [3]
 - _OneHotEncoding_: _Encode_ fitur kategorikal sebagai _array_ numerik _one-hot_. [3]
 - _TrainTestSplit_: Membagi _array_ atau _matrix_ menjadi _subset train_ dan _test_ secara acak. [3]
@@ -148,7 +151,6 @@ Teknik-teknik yang dilakukan untuk Data Preparation untuk model yang optimal.
 - _StandardScaler_: Standarisasi fitur dengan mengatur ulang _mean_ dan penskalaan varian satuan. [3]
 
 ## Modeling
-Tahapan ini membahas mengenai model _machine learning_ yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
 
 Tabel 2. Hasil akurasi base model
 |Model|Train Accuracy|Test Accuracy|
@@ -160,9 +162,9 @@ Tabel 2. Hasil akurasi base model
 
 Pada Tabel 2 menunjukan algoritma _Logistic Regression_ dan _SVC_ menghasilkan tingkat accuracy 84%. Algoritma _SVC_ menghasilkan accuracy yang lebih tinggi karena outliers berpengaruh sedikit pada model ini.
 
-Gambar 4. Perbandingan hasil accuracy setiap model
-
 ![Base model accuracies](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/basemodel.png?raw=true)
+
+Gambar 4. Perbandingan hasil accuracy setiap model
 
 _Model_ yang digunakan
 
@@ -198,8 +200,11 @@ _Models_
     - _n_jobs_: -1
 - _XGBoost_
   (_Extreme Gradient Boosting_) adalah implementasi dari algoritma _gradient boosted trees_ yang _open-source_ yang populer dan efisien. _Gradient boosting_ adalah algoritma _supervised learning_, yang mencoba untuk memprediksi variabel target secara akurat dengan menggabungkan estimasi dari sekumpulan model yang lebih sederhana dan lebih lemah. [7]
-  Gambar 5. Ilustrasi _XGBoost_
+
   ![XGBoost explanation](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/xbg.png?raw=true)
+
+  Gambar 5. Ilustrasi _XGBoost_
+
   - Kelebihan
     - Dirancang untuk pelatihan model yang efisien dan dapat *scalable*, sehingga cocok untuk kumpulan data besar.
     - Memiliki berbagai _hyperparameter_ yang dapat disesuaikan untuk mengoptimalkan kinerja, membuatnya sangat mudah disesuaikan.
@@ -324,7 +329,6 @@ Best features : Index(['CREDIT_SCORE', 'ANNUAL_MILEAGE', 'SPEEDING_VIOLATIONS',
 ```
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
 
 - _Accuracy_
 - _Precission_
@@ -340,18 +344,20 @@ _**Note**_:
 - FN: *False Negative* adalah nilai negatif yang diprediksi dengan salah
 
 ### _Confusion Matrix_
-_Confusion Matrix_ adalah petak informasi yang menunjukkan jumlah _True Positives_ [TP], _False Positives_ [FP], _True Negatives_ [TN], dan _False Negatives_ [FN] yang dikembalikan saat menerapkan kumpulan uji data ke algoritma klasifikasi. Dengan menggunakan _Confusion Matrix_ kita dapat mempelajari berapa kali model Anda membuat prediksi yang benar dan salah. [9]
-Gambar 6. _Confusion Matrix_
+_Confusion Matrix_ adalah petak informasi yang menunjukkan jumlah _True Positives_ [TP], _False Positives_ [FP], _True Negatives_ [TN], dan _False Negatives_ [FN] yang dikembalikan saat menerapkan kumpulan uji data ke algoritma klasifikasi. Dengan menggunakan _Confusion Matrix_ akan terlihat berapa kali model membuat prediksi yang benar dan salah. [9]
+
 ![Confision Matrix](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/cf.png?raw=true)
+
+Gambar 6. _Confusion Matrix_
 ### _Accuracy_
-_Accuracy_ memberi tahu kita berapa persentase prediksi yang benar dari model tersebut. Dengan menggunakan informasi ini, kami dapat menebak secara kasar berapa banyak prediksi masa depan kami yang salah jika model kami diterapkan dalam produksi. Semakin tinggi akurasinya, semakin baik. [9]
+_Accuracy_ adalah pengukuran yang digunakan untuk menentukan model mana yang paling baik dalam mengidentifikasi hubungan dan pola antarvariabel dalam set data berdasarkan input, atau data pelatihan. _Accuracy_ memberi tahu berapa persentase prediksi yang benar dari model tersebut. Akurasi tinggi bisa menyesatkan karena tidak menggambarkan bagaimana _True Positive_ dan _True Negative_ menyebar. [9]
 ```math
 \begin{array}{rcl}
 accuracy & = & \dfrac{TP + TN}{TP + FP + TN + FN}
 \end{array}
 ```
 ### _Precission_
-_Precission_ adalah persentase dari identifikasi positif yang dibuat oleh model yang benar. Dengan menggunakan _precission_, kita dapat memahami berapa banyak gambar yang dikatakan berisi objek yang benar-benar berisi objek yang diidentifikasi oleh model. [9]
+_Precission_ adalah persentase dari identifikasi positif yang dibuat oleh model yang benar. Dengan menggunakan _precission_, akan lebih mudah memahami berapa banyak gambar yang dikatakan berisi objek yang benar-benar berisi objek yang diidentifikasi oleh model. [9]
 ```math
 \begin{array}{rcl}
 precission & = & \dfrac{TP}{TP + FP}
@@ -366,8 +372,11 @@ recall & = & \dfrac{TP}{TP + FN}
 ```
 ### _F1 Score_
 _F1 score_ (juga dikenal sebagai _F-measure_, atau _balanced F-score_) adalah metrik yang digunakan untuk mengukur performa model _machine learning_ klasifikasi. Ini adalah metrik populer yang digunakan untuk model klasifikasi karena memberikan hasil yang kuat untuk kumpulan data seimbang dan tidak seimbang, tidak seperti akurasi. _F1 score_ adalah metrik _error_ yang mengukur kinerja model dengan menghitung rata-rata harmonik _precission_ dan _recall_ untuk kelas positif minoritas. [9]
-Gambar 7. Ilustrasi _Confusion Matrix, Accuracy, Precission, Recall_ dan _F1 Score_
+
 ![Acc, precission, recall, f1 score](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/cf2.png?raw=true)
+
+Gambar 7. Ilustrasi _Confusion Matrix, Accuracy, Precission, Recall_ dan _F1 Score_
+
 ```math
 \begin{array}{rcl}
 F1 & = & \dfrac{2 * precission * recall}{precission + recall}
@@ -375,8 +384,10 @@ F1 & = & \dfrac{2 * precission * recall}{precission + recall}
 ```
 ### _ROC AUC_
 Kurva ROC-AUC adalah pengukuran kinerja untuk masalah klasifikasi pada berbagai pengaturan ambang batas. ROC adalah kurva probabilitas dan AUC mewakili tingkat atau ukuran keterpisahan. Ini memberi tahu seberapa banyak model mampu membedakan antar kelas. Semakin tinggi AUC, semakin baik model dalam memprediksi 0 kelas sebagai 0 dan 1 kelas sebagai 1. [9]
-Gambar 8. Grafix AUC
+
 ![AUC](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/auc.png?raw=true)
+
+Gambar 8. Grafix AUC
 
 Tabel 3. _Classification report_ untuk model _Logistic Regression_
 
@@ -388,10 +399,10 @@ Tabel 3. _Classification report_ untuk model _Logistic Regression_
 |Marcro Avg|0.82|0.82|0.82|2445|
 |Weighted Avg|0.85|0.85|0.85|2445|
 
-Gambar 9. _Confission Matrix_ dan Grafil _AUC_ untuk model _Logistic Regression_
-
 ![Confusion Matrix Logistic Regression](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evallr.png?raw=true)
 ![AUC Logistic Regression](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evallrauc.png?raw=true)
+
+Gambar 9. _Confission Matrix_ dan Grafil _AUC_ untuk model _Logistic Regression_
 
 Skor _AUC_ mencapai 0.918 dengan _False Positive_ 189 dan _False Negative_ 182.
 
@@ -405,10 +416,10 @@ Tabel 4. _Classification report_ untuk model _Random Forest Classifier_
 |Marcro Avg|0.81|0.82|0.81|2445|
 |Weighted Avg|0.85|0.84|0.84|2445|
 
-Gambar 10. _Confission Matrix_ dan Grafil _AUC_ untuk model _Random Forest Classifier_
-
 ![Confusion Matrix Random Forest Classifier](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalrfcm.png?raw=true)
 ![AUC Random Forest Classifier](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalrfauc.png?raw=true)
+
+Gambar 10. _Confission Matrix_ dan Grafil _AUC_ untuk model _Random Forest Classifier_
 
 Skor _AUC_ mencapai 0.908 dengan _False Positive_ 169 dan _False Negative_ 219.
 
@@ -422,10 +433,10 @@ Tabel 5. _Classification report_ untuk model _XGBoost_
 |Marcro Avg|0.81|0.82|0.82|2445|
 |Weighted Avg|0.85|0.84|0.85|2445|
 
-Gambar 11. _Confission Matrix_ dan Grafil _AUC_ untuk model _XGBoost_
-
 ![Confusion Matrix XGBoost](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalxgbcm.png?raw=true)
 ![AUC XGBoost](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalxgbauc.png?raw=true)
+
+Gambar 11. _Confission Matrix_ dan Grafil _AUC_ untuk model _XGBoost_
 
 Skor _AUC_ mencapai 0.915 dengan _False Positive_ 172 dan _False Negative_ 209.
 
@@ -439,10 +450,10 @@ Tabel 6. _Classification report_ untuk model _Support Vector Classifier_
 |Marcro Avg|0.82|0.82|0.82|2445|
 |Weighted Avg|0.85|0.85|0.85|2445|
 
-Gambar 12. _Confission Matrix_ dan Grafil _AUC_ untuk model _Support Vector Classifier_
-
 ![Confusion Matrix Support Vector Classifier](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalsvccm.png?raw=true)
 ![AUC Logistic Regression](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalsvcauc.png?raw=true)
+
+Gambar 12. _Confission Matrix_ dan Grafil _AUC_ untuk model _Support Vector Classifier_
 
 Skor _AUC_ mencapai 0.916 dengan _False Positive_ 187 dan _False Negative_ 184.
 
@@ -455,9 +466,9 @@ Tabel 7. Hasil akhir model setelah _hyperparameter tuning_
 |XGBoost|84.417178|0.915|
 |Support Vector Classifier|84.826176|0.916|
 
-Gambar 13. Perbandingan skor _Accuracy_ setelah _hyperparameter tuning_.
-
 ![Final Accuracy](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/evalacc.png?raw=true)
+
+Gambar 13. Perbandingan skor _Accuracy_ setelah _hyperparameter tuning_.
 
 Setelah _hyperparameter tuning_, tetap model _Logistic Regression_ yang menghasilkan akurasi tertinggi dengan nilai 84% dan model yang lain mendapat peningkatan akurasi. Selain akurasi tinggi model ini menghasilkan nilai _ROC AUC_ tertinggi yaitu dengan nilai 0.918. Model ini sudah cukup bagus untuk bisa memprediksi pengajuan asuransi.
 
