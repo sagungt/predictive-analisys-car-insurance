@@ -367,7 +367,7 @@ recall & = & \dfrac{TP}{TP + FN}
 ### _F1 Score_
 _F1 score_ (juga dikenal sebagai _F-measure_, atau _balanced F-score_) adalah metrik yang digunakan untuk mengukur performa model _machine learning_ klasifikasi. Ini adalah metrik populer yang digunakan untuk model klasifikasi karena memberikan hasil yang kuat untuk kumpulan data seimbang dan tidak seimbang, tidak seperti akurasi. _F1 score_ adalah metrik _error_ yang mengukur kinerja model dengan menghitung rata-rata harmonik _precission_ dan _recall_ untuk kelas positif minoritas. [9]
 Gambar 7. Ilustrasi _Confusion Matrix, Accuracy, Precission, Recall_ dan _F1 Score_
-![Acc, precission, recall, f1 score](img/cf2.png)
+![Acc, precission, recall, f1 score](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/cf2.png)
 ```math
 \begin{array}{rcl}
 F1 & = & \dfrac{2 * precission * recall}{precission + recall}
@@ -376,7 +376,7 @@ F1 & = & \dfrac{2 * precission * recall}{precission + recall}
 ### _ROC AUC_
 Kurva ROC-AUC adalah pengukuran kinerja untuk masalah klasifikasi pada berbagai pengaturan ambang batas. ROC adalah kurva probabilitas dan AUC mewakili tingkat atau ukuran keterpisahan. Ini memberi tahu seberapa banyak model mampu membedakan antar kelas. Semakin tinggi AUC, semakin baik model dalam memprediksi 0 kelas sebagai 0 dan 1 kelas sebagai 1. [9]
 Gambar 8. Grafix AUC
-![AUC](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/cf2.png)
+![AUC](https://github.com/sagungt/predictive-analisys-car-insurance/blob/323d871e5ef9bfefd7769fa4a838bc0a1a1dda97/img/auc.png)
 
 Tabel 3. _Classification report_ untuk model _Logistic Regression_
 
